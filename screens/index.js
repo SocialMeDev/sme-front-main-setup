@@ -1,6 +1,6 @@
 import { Center, Heading } from '@chakra-ui/react'
 import Lottie from 'react-lottie'
-import animationData from '../public/images/lotties/duck.json'
+import animationData from 'public/images/lotties/duck.json'
 
 export default function SetupPage() {
 	const defaultOptions = {

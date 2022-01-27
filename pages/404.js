@@ -10,8 +10,9 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Lottie from 'react-lottie'
-import animationDataLight from '../public/images/lotties/404bounceLight.json'
-import animationDataDark from '../public/images/lotties/404bounceDark.json'
+
+import animationDataLight from 'public/images/lotties/404bounceLight.json'
+import animationDataDark from 'public/images/lotties/404bounceDark.json'
 
 export default function Custom404() {
 	const defaultOptions = {
@@ -25,7 +26,7 @@ export default function Custom404() {
 	const lottieHeight = useBreakpointValue({ base: 150, md: 400 })
 	const lottieWidth = useBreakpointValue({ base: 300, md: 600 })
 	return (
-		<Center p={[2, null, 10]} minH={['90vh', null, '100vh']}>
+		<Center as="main" p={[2, null, 10]} minH={['90vh', null, '100vh']}>
 			<Flex flexDir={['column', null, 'row']}>
 				<Center w={['auto', null, 600]}>
 					<Lottie
@@ -45,9 +46,9 @@ export default function Custom404() {
 						Você parece perdido.
 					</Heading>
 					<Text fontSize={'lg'} textAlign={['center', null, 'justify']}>
-						A página que você está procurando não existe. Como você chegou aqui é um
-						mistério, mas você pode clicar no botão abaixo para voltar à página
-						inicial.
+						A página que você está procurando não existe. Como você chegou aqui
+						é um mistério, mas você pode clicar no botão abaixo para voltar à
+						página inicial.
 					</Text>
 					<NextLink href={'/'} passHref>
 						<Button size={'lg'} colorScheme={'purple'} w={'100%'}>

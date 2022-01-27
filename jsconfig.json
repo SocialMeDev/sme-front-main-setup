@@ -1,5 +1,11 @@
 {
 	"compilerOptions": {
 		"baseUrl": "src",
-	},
+		"paths": {
+			"pages/*": ["../pages/*"],
+			"screens/*": ["../screens/*"],
+			"constants/*": ["../constants/*"],
+			"public/*": ["../public/*"]
+		}
+	}
 }

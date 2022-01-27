@@ -4,7 +4,7 @@ module.exports = () => {
 	const isProduction = process.env.NODE_ENV === 'production'
 
 	const configs = {
-		//trailingSlash: true,
+		trailingSlash: true,
 		reactStrictMode: true,
 		pwa: {
 			dest: 'public',

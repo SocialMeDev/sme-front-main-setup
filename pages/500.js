@@ -11,8 +11,9 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Lottie from 'react-lottie'
-import animationDataLight from '../public/images/lotties/errorLight.json'
-import animationDataDark from '../public/images/lotties/errorDark.json'
+
+import animationDataLight from 'public/images/lotties/errorLight.json'
+import animationDataDark from 'public/images/lotties/errorDark.json'
 
 export default function Custom500() {
 	const defaultOptions = {
@@ -26,7 +27,7 @@ export default function Custom500() {
 	const lottieHeight = useBreakpointValue({ base: 150, md: 500 })
 	const lottieWidth = useBreakpointValue({ base: 150, md: 500 })
 	return (
-		<Center p={2} minH={['90vh', null, '100vh']}>
+		<Center as="main" p={2} minH={['90vh', null, '100vh']}>
 			<Flex flexDir={['column', null, 'row']}>
 				<Box>
 					<Lottie
@@ -47,8 +48,8 @@ export default function Custom500() {
 					</Heading>
 					<Text fontSize={'lg'} textAlign={['center', null, 'justify']}>
 						Pedimos desculpas por isso. Tivemos problemas técnicos durante nossa
-						última operação, mas você pode clicar no botão abaixo para voltar à página
-						inicial.
+						última operação, mas você pode clicar no botão abaixo para voltar à
+						página inicial.
 					</Text>
 					<NextLink href={'/'} passHref>
 						<Button size={'lg'} colorScheme={'purple'} w={'100%'}>
