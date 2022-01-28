@@ -8,15 +8,15 @@ import '@fontsource/poppins'
 //import theme from 'styles/theme'
 
 function App({ Component, pageProps }) {
-	return (
-		<ChakraProvider /*theme={theme}*/>
-			<Component {...pageProps} />
-			<ToastContainer
-				position="top-center"
-				autoClose={2000}
-				pauseOnHover={false}
-			/>
-		</ChakraProvider>
-	)
+  return (
+    <ChakraProvider /*theme={theme}*/>
+      <Component {...pageProps} />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        pauseOnHover={false}
+      />
+    </ChakraProvider>
+  )
 }
 export default App
