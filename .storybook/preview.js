@@ -4,7 +4,7 @@ import { ChakraProvider, CSSReset, Box } from '@chakra-ui/react'
 
 import '@fontsource/poppins'
 
-import SideBarProvider from 'contexts/Sidebar/Provider'
+import SidebarProvider from 'contexts/Sidebar/Provider'
 
 import theme from 'styles/theme'
 
@@ -23,9 +23,9 @@ export const decorators = [
 		<ChakraProvider theme={theme}>
 			<CSSReset />
 			<Box m="5">
-				<SideBarProvider>
+				<SidebarProvider>
 					<Story />
-				</SideBarProvider>
+				</SidebarProvider>
 			</Box>
 		</ChakraProvider>
 	)
