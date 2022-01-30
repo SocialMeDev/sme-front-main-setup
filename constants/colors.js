@@ -1,4 +1,4 @@
-const colors = {
+const customColors = {
   primary: {
     50: '#f9ebff',
     100: '#e2c8ec',
@@ -13,4 +13,4 @@ const colors = {
   }
 }
 
-export default colors
+export default customColors
