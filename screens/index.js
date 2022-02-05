@@ -15,7 +15,7 @@ export default function SetupPage() {
     <main>
       <Center minH="100vh" flexDirection={'column'}>
         <Lottie options={defaultOptions} height={300} width={300} />
-        <Heading>Setup Page</Heading>
+        <Heading>Setup</Heading>
       </Center>
     </main>
   )

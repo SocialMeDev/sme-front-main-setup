@@ -1,9 +1,6 @@
-import defaultLogo from 'public/images/logo/default-logo.svg'
-import defaultLogoMini from 'public/images/logo/default-mini-logo.svg'
+import Logo from 'public/images/logos/logo.svg'
+import MiniLogo from 'public/images/logos/mini-logo.svg'
+import DarkLogo from 'public/images/logos/logo.svg'
+import DarkMiniLogo from 'public/images/logos/mini-logo.svg'
 
-const files = {
-	logo: defaultLogo,
-	miniLogo: defaultLogoMini
-}
-
-export default files
+export { Logo, DarkLogo, MiniLogo, DarkMiniLogo }

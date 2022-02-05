@@ -1,7 +1,7 @@
 {
   "theme_color": "#8943a2",
   "background_color": "#8943a2",
-  "display": "browser",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "name": "Setup PWA",
