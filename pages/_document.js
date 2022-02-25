@@ -11,8 +11,8 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" href="flavicon.png" />
-          <link rel="apple-touch-icon" href="flavicon.png" />
+          <link rel="shortcut icon" href="/flavicon.png" />
+          <link rel="apple-touch-icon" href="/flavicon.png" />
 
           <meta name="theme-color" content="#fff" />
         </Head>

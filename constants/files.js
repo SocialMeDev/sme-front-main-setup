@@ -1,9 +1,8 @@
-import defaultLogo from 'public/images/logo/default-logo.svg'
-import defaultLogoMini from 'public/images/logo/default-mini-logo.svg'
-
-const files = {
-  logo: defaultLogo,
-  miniLogo: defaultLogoMini
+const app = {
+  logo: 'public/images/logos/logo.svg',
+  miniLogo: 'public/images/logos/mini-logo.svg',
+  logoDark: 'public/images/logos/logo.svg',
+  miniDarkLogo: 'public/images/logos/mini-logo.svg'
 }
 
-export default files
+export default app
