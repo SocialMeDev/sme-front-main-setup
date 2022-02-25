@@ -7,7 +7,7 @@ module.exports = withPWA({
     dest: 'public/pwa',
     register: true,
     skipWaiting: true,
-    disable: false
+    disable: true
     // disable: process.env.NODE_ENV === 'development'
   }
 })
