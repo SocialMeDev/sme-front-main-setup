@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import '@fontsource/poppins'
-
+import '@fontsource/roboto'
 //import theme from 'styles/theme'
 
 function App({ Component, pageProps }) {
