@@ -1,8 +1,8 @@
-const app = {
-  logo: 'public/images/logos/logo.svg',
-  miniLogo: 'public/images/logos/mini-logo.svg',
-  logoDark: 'public/images/logos/logo.svg',
-  miniDarkLogo: 'public/images/logos/mini-logo.svg'
+const files = {
+  logo: '/images/logos/logo.svg',
+  miniLogo: '/images/logos/mini-logo.svg',
+  logoDark: '/images/logos/logo-dark.svg',
+  miniDarkLogo: '/images/logos/mini-logo-dark.svg'
 }
 
 export default app
