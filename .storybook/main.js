@@ -21,7 +21,7 @@ module.exports = {
 					styles: path.resolve(__dirname, '../src/styles'),
 					utils: path.resolve(__dirname, '../src/utils'),
 					hooks: path.resolve(__dirname, '../src/hooks'),
-
+					variables: path.resolve(__dirname, '../src/variables'),
 					'@emotion/core': '@emotion/react',
 					'emotion-theming': '@emotion/react'
 				}
