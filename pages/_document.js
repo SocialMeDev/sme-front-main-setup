@@ -10,11 +10,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta charSet="UTF-8" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="shortcut icon" href="/flavicon.png" />
           <link rel="apple-touch-icon" href="/flavicon.png" />
-
-          <meta name="theme-color" content="#fff" />
         </Head>
         <body>
           <Main />

@@ -5,4 +5,4 @@ const files = {
   miniDarkLogo: '/images/logos/mini-logo-dark.svg'
 }
 
-export default app
+export default files

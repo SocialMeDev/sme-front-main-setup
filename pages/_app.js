@@ -1,15 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { ToastContainer } from 'react-toastify'
-
 import 'react-toastify/dist/ReactToastify.css'
-
 import '@fontsource/poppins'
-import '@fontsource/roboto'
-//import theme from 'styles/theme'
+
+import theme from 'styles/theme'
 
 function App({ Component, pageProps }) {
   return (
-    <ChakraProvider /*theme={theme}*/>
+    <ChakraProvider theme={theme}>
       <Component {...pageProps} />
       <ToastContainer
         position="top-center"
