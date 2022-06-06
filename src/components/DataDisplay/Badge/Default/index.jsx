@@ -5,6 +5,7 @@ import { useSizeValue } from 'hooks'
 
 function BadgeDefault({
   children,
+  colorScheme = 'green',
   variant = 'outline',
   size = useSizeValue('xs', 'sm', 'md'),
   ...rest
@@ -13,10 +14,13 @@ function BadgeDefault({
     <Badge
       px={1}
       py={0.5}
-      fontWeight="500"
       size={size}
       variant={variant}
+      fontWeight="500"
+      bg={colorScheme === 'green' && 'green.600'}
+      colorScheme={colorScheme}
       letterSpacing={1}
+      oapcity={1}
       {...rest}
     >
       {children}

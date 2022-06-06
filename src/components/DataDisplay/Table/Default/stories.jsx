@@ -22,9 +22,11 @@ export const Default = (args) => (
       <TableCaption>Imperial to metric conversion factors</TableCaption>
       <Thead>
         <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
+          <Th scope="col">To convert</Th>
+          <Th scope="col">into</Th>
+          <Th scope="col" isNumeric>
+            multiply by
+          </Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -46,9 +48,9 @@ export const Default = (args) => (
       </Tbody>
       <Tfoot>
         <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
+          <Td>To convert</Td>
+          <Td>into</Td>
+          <Td isNumeric>multiply by</Td>
         </Tr>
       </Tfoot>
     </Table>

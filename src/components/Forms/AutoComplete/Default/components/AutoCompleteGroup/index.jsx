@@ -2,12 +2,12 @@ import { memo } from 'react'
 
 import { ScrollView } from 'components'
 
-function OptionsGroup({ isOpen, children }) {
+function AutoCompleteGroup({ isOpen, children }) {
   return (
     <ScrollView
       display={isOpen ? 'block' : 'none'}
       p={2}
-      mt={1}
+      mt={2}
       spacing={1}
       bg="light"
       rounded="md"
@@ -24,4 +24,4 @@ function OptionsGroup({ isOpen, children }) {
   )
 }
 
-export default memo(OptionsGroup)
+export default memo(AutoCompleteGroup)

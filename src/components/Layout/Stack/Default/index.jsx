@@ -1,8 +1,9 @@
-import { memo } from 'react'
+import { memo, forwardRef } from 'react'
+
 import { Stack } from '@chakra-ui/react'
 
-function StackDefault({ children, ...rest }) {
-  return <Stack {...rest}>{children}</Stack>
-}
+const StackDefault = forwardRef((props, ref) => {
+  return <Stack ref={ref} {...props} />
+})
 
 export default memo(StackDefault)

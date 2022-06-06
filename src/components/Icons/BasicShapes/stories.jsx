@@ -29,5 +29,7 @@ export default {
   }
 }
 export const Common = (args) => {
+  console.log(`Icons`, Icons)
+
   return <IconsContainer Icons={Icons} {...args} />
 }
