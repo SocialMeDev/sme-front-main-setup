@@ -4,7 +4,7 @@ import decodePayload from './decodePayload'
 import encodePayload from './encodePayload'
 import getFormattedAddress from './getFormattedAddress'
 import getFormattedAvatarUrl from './getFormattedAvatarUrl'
-import getFormattedStatusText from './getFormattedStatusText'
+import getFormattedStatus from './getFormattedStatus'
 import removeEverythingThatIsNotNumber from './removeEverythingThatIsNotNumber'
 
 export {
@@ -14,6 +14,6 @@ export {
   encodePayload,
   getFormattedAddress,
   getFormattedAvatarUrl,
-  getFormattedStatusText,
+  getFormattedStatus,
   removeEverythingThatIsNotNumber
 }

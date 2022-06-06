@@ -2,11 +2,9 @@ import { memo } from 'react'
 import { useRouter } from 'next/router'
 
 import { Box, Flex, Text, Tooltip, Icon } from 'components'
-import { useSidebar } from 'contexts/Sidebar/Provider'
 import { useSizeValue } from 'hooks'
 
-function MenuItem({ groupHref, item }) {
-  const { isOpen } = useSidebar()
+function MenuItem({ isOpen, groupHref, item }) {
   const { push, asPath } = useRouter()
 
   let isActive = false
@@ -46,6 +44,7 @@ function MenuItem({ groupHref, item }) {
           gap={isOpen && useSizeValue(2, 3, 4)}
           mb={isOpen && 1}
           _hover={!isActive && { bg: 'lightPrimary' }}
+          _focus={!isActive && { bg: 'lightPrimary' }}
         >
           <Icon as={item.icon} />
           {isOpen ? (

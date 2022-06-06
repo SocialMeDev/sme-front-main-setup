@@ -43,7 +43,6 @@ function LoggedUserMenu({ query }) {
     <Menu>
       <MenuButton>
         <Avatar
-          _hover={{ outlineColor: 'primary' }}
           src={getFormattedAvatarUrl(user)}
           alt={user.name}
           name={user.name}

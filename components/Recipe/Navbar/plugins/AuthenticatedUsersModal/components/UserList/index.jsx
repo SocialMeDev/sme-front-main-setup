@@ -16,11 +16,9 @@ function UserList({ pathToAccount }) {
     if (selectedUser.token_status === 'ACTIVE') {
       await setNewUser(selectedUser, userIndex)
 
-      query.userPosition = userIndex
-
-      await push({ pathname, query })
+      await push({ pathname, query: { ...query, userPosition: userIndex } })
     } else {
-      setTemporaryUser(selectedUser)
+      await setTemporaryUser(selectedUser)
 
       await push(pathToAccount('/auth/accounts'))
     }

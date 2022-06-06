@@ -1,23 +1,23 @@
-import { useState, useEffect, memo } from 'react'
-import { Box } from 'components'
+import { useEffect, Fragment, memo } from 'react'
+import { useRouter } from 'next/router'
 
 import { useAuth } from 'contexts/Auth/Provider'
-import { Validate } from 'components'
+import toast from 'utils/toast'
 
-function HasUser({ children, redirect }) {
-  const [loading, setLoading] = useState(true)
-  const [userExist, setUserExist] = useState(false)
-
+function HasUser({ children, redirect, setLoading }) {
+  const { push } = useRouter()
   const { user } = useAuth()
 
   useEffect(() => {
+    setLoading(true)
+
     async function loadAsync() {
       const userExist = Object.entries(user).length > 0
 
-      if (userExist) {
-        setUserExist(true)
-      } else {
-        setUserExist(false)
+      if (!userExist) {
+        toast.error('Você não tem permissão.')
+
+        await push(redirect)
       }
 
       setLoading(false)
@@ -26,21 +26,7 @@ function HasUser({ children, redirect }) {
     loadAsync()
   }, [user])
 
-  return (
-    <Box>
-      {loading ? (
-        <Box>{children}</Box>
-      ) : (
-        <Validate
-          isValid={userExist}
-          redirect={redirect}
-          message="Usuário não existe"
-        >
-          {children}
-        </Validate>
-      )}
-    </Box>
-  )
+  return <Fragment>{children}</Fragment>
 }
 
 export default memo(HasUser)

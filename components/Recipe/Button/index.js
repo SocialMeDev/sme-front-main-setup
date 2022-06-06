@@ -22,12 +22,12 @@ export {
   DotsButton,
   DeleteButton,
   DetailsButton,
-  UpdateButton,
   GroupButton,
   JudgmentButton,
   OrganizationUnitButton,
   PermissionsButton,
   RefuseButton,
   UnbindButton,
+  UpdateButton,
   UsersButton
 }

@@ -29,43 +29,41 @@ function Pagination({
 
   return (
     <Fragment>
-      {totalItems > limit && (
-        <Flex
-          p={4}
-          justify={showDescription ? 'space-between' : 'center'}
-          align="center"
-          direction={{ base: 'column', md: 'row' }}
-        >
-          <Fragment>
-            {showDescription && (
-              <PaginationDescription
-                limit={limit}
-                page={currentPage}
-                totalItems={totalItems}
-                label={descriptionLabel}
-              />
-            )}
+      <Flex
+        p={4}
+        justify={showDescription ? 'space-between' : 'center'}
+        align="center"
+        direction={{ base: 'column', md: 'row' }}
+      >
+        <Fragment>
+          {showDescription && (
+            <PaginationDescription
+              limit={limit}
+              page={currentPage}
+              totalItems={totalItems}
+              label={descriptionLabel}
+            />
+          )}
 
-            <Flex gap={2}>
-              <PageItems
-                currentPage={currentPage}
-                choosePages={choosePages}
+          <Flex gap={2}>
+            <PageItems
+              currentPage={currentPage}
+              choosePages={choosePages}
+              onChangePage={onChangePage}
+            />
+            {onChangeLimit && (
+              <LimitSelect limit={limit} onChangeLimit={onChangeLimit} />
+            )}
+            {hasShortCut && (
+              <PageShortCut
+                totalItems={totalItems}
+                limit={limit}
                 onChangePage={onChangePage}
               />
-              {onChangeLimit && (
-                <LimitSelect limit={limit} onChangeLimit={onChangeLimit} />
-              )}
-              {hasShortCut && (
-                <PageShortCut
-                  totalItems={totalItems}
-                  limit={limit}
-                  onChangePage={onChangePage}
-                />
-              )}
-            </Flex>
-          </Fragment>
-        </Flex>
-      )}
+            )}
+          </Flex>
+        </Fragment>
+      </Flex>
     </Fragment>
   )
 }

@@ -7,6 +7,24 @@ const WhiteLabel = {
       url: '/admin/person/white-label/whiteLabelSlug/avatar',
       method: 'post',
       timeout: 50000
+    },
+    Update: {
+      baseURL: getApiUrl('sme-auth'),
+      url: '/admin/person/white-label/whiteLabelSlug/avatar/avatarId',
+      method: 'patch',
+      timeout: 50000
+    },
+    Delete: {
+      baseURL: getApiUrl('sme-auth'),
+      url: '/admin/person/white-label/whiteLabelSlug/avatar/avatarId',
+      method: 'delete',
+      timeout: 50000
+    },
+    Read: {
+      baseURL: getApiUrl('sme-auth'),
+      url: '/admin/person/white-label/whiteLabelSlug/avatars',
+      method: 'post',
+      timeout: 50000
     }
   },
   Delete: {

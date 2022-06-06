@@ -2,7 +2,7 @@ import API from 'services/socialMeApis/modules/admin'
 
 import toast from 'utils/toast'
 
-export default async function updateWhiteLabel(data, whiteLabelSlug) {
+export default async function updateWhiteLabel({ data, whiteLabelSlug }) {
   const params = {
     operation: ['WhiteLabel', 'Update'],
     urlParams: {

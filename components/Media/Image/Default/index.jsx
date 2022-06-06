@@ -1,8 +1,9 @@
-import { memo } from 'react'
+import { forwardRef, memo } from 'react'
+
 import { Image } from '@chakra-ui/react'
 
-function ImageDefault({ ...rest }) {
-  return <Image {...rest} />
-}
+const ImageDefault = forwardRef(({ ...rest }, ref) => {
+  return <Image ref={ref} {...rest} />
+})
 
 export default memo(ImageDefault)

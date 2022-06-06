@@ -19,6 +19,8 @@ import { TrashDeleteBin } from 'components/Icons/Interface'
 function DeleteButton({
   children,
   onDelete,
+  colorScheme = 'gray',
+  color = 'dark',
   title = 'Você tem certeza disso?',
   text,
   description = 'Você não poderá voltar atrás',
@@ -51,9 +53,9 @@ function DeleteButton({
   const IconButtonType = useCallback(() => {
     return (
       <IconButton
-        colorScheme="gray"
-        variant="ghost"
-        icon={<TrashDeleteBin color="dark" />}
+        colorScheme={colorScheme}
+        variant={variant}
+        icon={<TrashDeleteBin color={color} />}
         onClick={shouldOpenModal}
         {...rest}
       />
@@ -64,7 +66,7 @@ function DeleteButton({
     return (
       <Button
         variant={variant}
-        colorScheme="red"
+        colorScheme={colorScheme}
         leftIcon={<TrashDeleteBin />}
         onClick={shouldOpenModal}
         {...rest}

@@ -77,12 +77,11 @@ const {
 } = Feedback
 const { Head } = SEO
 const {
-  Authentication,
+  IsAuthenticated,
   HiddenPermission,
   RedirectPermission,
   UserHasAtLeastOnePermission,
-  HasUser,
-  Validate
+  HasUser
 } = Validation
 const { Avatar, AvatarGroup, Icon, Image, Lottie } = Media
 const { ScaleFade } = Transitions
@@ -166,6 +165,7 @@ const {
   Tooltip
 } = Overlay
 const {
+  UploadSingleImage,
   Search,
   Button,
   ButtonGroup,
@@ -273,12 +273,11 @@ export {
   Image,
   Lottie,
   // Validation
-  Authentication,
+  IsAuthenticated,
   HiddenPermission,
   RedirectPermission,
   UserHasAtLeastOnePermission,
   HasUser,
-  Validate,
   // DataDisplay
   Card,
   Paper,
@@ -307,6 +306,7 @@ export {
   AccordionItem,
   AccordionPanel,
   // Navigation
+
   Link,
   LinkBox,
   LinkOverlay,
@@ -326,6 +326,7 @@ export {
   ButtonGroup,
   FileManager,
   SingleFileItem,
+  UploadSingleImage,
   Dropzone,
   IconButton,
   Checkbox,

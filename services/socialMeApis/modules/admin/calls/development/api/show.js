@@ -2,7 +2,7 @@ import API from 'services/socialMeApis/modules/admin'
 
 import toast from 'utils/toast'
 
-export default async function showAPIs(apiId) {
+export default async function showAPI(apiId) {
   const params = {
     operation: ['API', 'Show'],
     urlParams: {

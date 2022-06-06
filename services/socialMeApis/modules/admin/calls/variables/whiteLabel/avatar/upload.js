@@ -2,7 +2,7 @@ import API from 'services/socialMeApis/modules/admin'
 
 import toast from 'utils/toast'
 
-export default async function uploadWhiteLabelAvatar(file, whiteLabelSlug) {
+export default async function uploadWhiteLabelAvatar({ file, whiteLabelSlug }) {
   const data = new FormData()
 
   data.append('file', file)
