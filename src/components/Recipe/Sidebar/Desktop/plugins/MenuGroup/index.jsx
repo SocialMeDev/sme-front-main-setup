@@ -17,7 +17,12 @@ function MenuGroup({ sidebarItems }) {
               <MenuGroupTitle name={name} icon={icon} />
 
               {childrens?.map((item) => (
-                <MenuItem key={item.label} groupHref={href} item={item} />
+                <MenuItem
+                  isOpen={isOpen}
+                  key={item.label}
+                  groupHref={href}
+                  item={item}
+                />
               ))}
             </Flex>
           )}

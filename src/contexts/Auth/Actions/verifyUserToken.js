@@ -24,7 +24,8 @@ export default async function verifyUserToken(userPositionInURL) {
 
   if (usersToken.length !== 0) {
     response = await checkUserToken()
-    if (response?.header?.success) {
+
+    if (response.header.success) {
       await setStorage(userPositionCookie, userPosition)
 
       response.position = userPosition

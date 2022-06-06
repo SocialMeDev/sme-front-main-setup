@@ -1,15 +1,14 @@
 import { useEffect, useContext, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 
+import { Loader } from 'components'
 import { getParameterName, getCookieName } from 'utils/helpers/sirVariables'
 import { setStorage } from 'utils/helpers/sirStorage'
-import { Loader } from 'components'
 import SocialMeContext from './Context'
 
 export default function SocialMeProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true)
-  const { query } = useRouter()
-  const router = useRouter()
+  const { query, replace, reload } = useRouter()
 
   const { usersTokens, userPosition } = useMemo(() => {
     return {
@@ -29,14 +28,15 @@ export default function SocialMeProvider({ children }) {
         url = window.location.href.split('?')[0]
       }
 
-      await router.replace(url)
-      return router.reload()
+      await replace(url)
+      return reload()
     }
 
     if (usersTokens && userPosition) {
       setAuthInformations()
+    } else {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }, [usersTokens, userPosition])
 
   return (

@@ -2,7 +2,7 @@ import API from 'services/socialMeApis/modules/admin'
 
 import toast from 'utils/toast'
 
-export default async function updateResponseCode(data, responseCodeId) {
+export default async function updateResponseCode({ data, responseCodeId }) {
   const params = {
     operation: ['ResponseCode', 'Update'],
     urlParams: {

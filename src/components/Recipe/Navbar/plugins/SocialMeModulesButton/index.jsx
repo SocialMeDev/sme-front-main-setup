@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react'
 import {
+  NextLink,
   Heading,
   IconButton,
   Image,
@@ -8,15 +9,14 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  useDisclosure,
   Box,
   Flex,
   SimpleGrid,
   Text
-} from '@chakra-ui/react'
+} from 'components'
+import { useDisclosure } from 'hooks'
 import { getAppUrl } from 'utils/helpers/sirVariables'
-import { LinkWrapper } from 'components/atoms/Link/Basic'
-import { GridLayout10 } from 'components/atoms/Icons/Interface'
+import { GridLayout10 } from 'components/Icons/Interface'
 
 function SocialMeModulesButton() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -54,7 +54,7 @@ function SocialMeModulesButton() {
           <Box p={3}>
             <SimpleGrid columns={3} spacing={2}>
               {modules.map((item) => (
-                <LinkWrapper key={item.name} href={item.href}>
+                <NextLink key={item.name} href={item.href}>
                   <Flex
                     p={1}
                     gap={2}
@@ -64,14 +64,14 @@ function SocialMeModulesButton() {
                     align="center"
                     transition="all 0.4s"
                     _hover={{
-                      bg: 'weakBg',
-                      color: 'lightColor'
+                      bg: 'primary',
+                      color: 'light'
                     }}
                   >
                     <Image src={item.imageURL} alt={item.name} boxSize="32px" />
                     <Text>{item.name}</Text>
                   </Flex>
-                </LinkWrapper>
+                </NextLink>
               ))}
             </SimpleGrid>
           </Box>

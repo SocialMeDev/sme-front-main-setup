@@ -3,12 +3,18 @@ import { memo } from 'react'
 import { IconButton } from 'components'
 import { PenEdit5 } from 'components/Icons/Interface'
 
-function UpdateButton({ children, ...rest }) {
+function UpdateButton({
+  children,
+  variant = 'ghost',
+  colorScheme = 'gray',
+  color = 'dark',
+  ...rest
+}) {
   return (
     <IconButton
-      variant="ghost"
-      colorScheme="gray"
-      icon={<PenEdit5 color="dark" />}
+      variant={variant}
+      colorScheme={colorScheme}
+      icon={<PenEdit5 color={color} />}
       {...rest}
     >
       {children}

@@ -3,7 +3,6 @@ import { memo, Fragment, useState, useCallback } from 'react'
 import { useFileManager } from 'components/Forms/Upload/FileManager/contexts/Provider'
 import { Box, Center, Heading, Text, Stack } from 'components'
 import { CloudUpload2 } from 'components/Icons/Interface'
-import { useDebounce } from 'hooks'
 import { getFormatedBytes } from 'utils/transforms/number'
 
 function Dropzone() {
@@ -26,26 +25,12 @@ function Dropzone() {
     event.preventDefault()
   }, [])
 
-  const dragEnter = useCallback(() => {
-    setFileEnterDropzone(true)
-  }, [])
-
-  const dragLeave = useCallback(() => {
-    setFileEnterDropzone(false)
-  }, [])
-
-  const debouncedDragEnter = useDebounce(dragEnter, 200)
-
-  const debouncedDragLeave = useDebounce(dragLeave, 200)
-
   return (
     <Fragment>
       {!isUploading && (
         <Center
           onDrop={onDropFile}
           onDragOver={dropOver}
-          onDragEnter={debouncedDragEnter}
-          onDragLeave={debouncedDragLeave}
           onClick={onSearchFile}
           width="100%"
           as="button"

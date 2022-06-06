@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useColorMode } from '@chakra-ui/react'
 
-import { IconButton } from '@chakra-ui/react'
+import { IconButton } from 'components'
 import { Moon, Sun } from 'components/Icons/Weather'
 
 function ThemeButton() {

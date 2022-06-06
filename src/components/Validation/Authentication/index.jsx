@@ -1,13 +1,16 @@
-import { useState, useEffect, memo } from 'react'
-import { Box } from '@chakra-ui/react'
+import { Fragment, useEffect, memo } from 'react'
+import { useRouter } from 'next/router'
 
+import toast from 'utils/toast'
 import { useAuth } from 'contexts/Auth/Provider'
-import { Validate } from 'components'
 
-function Authentication({ children, redirect, shouldBeDisconnect }) {
-  const [loading, setLoading] = useState(true)
-  const [isConnected, setIsConnected] = useState(false)
-  const [message, setMessage] = useState('Mensagem')
+function Authentication({
+  children,
+  setLoading,
+  redirect,
+  shouldBeDisconnect
+}) {
+  const { push } = useRouter()
 
   const { user, userPosition } = useAuth()
 
@@ -18,35 +21,23 @@ function Authentication({ children, redirect, shouldBeDisconnect }) {
       const isConnected = userPosition !== false || shouldBeDisconnect === true
       const userExist = user.id
 
-      if (isConnected && userExist) {
-        setIsConnected(true)
-      } else {
-        setIsConnected(false)
-
+      if (!isConnected && !userExist) {
         const authMessage = shouldBeDisconnect
           ? 'Usuário já conectado'
           : 'Usuário não conectado'
 
-        setMessage(authMessage || 'Usuário não existe')
+        toast.error(authMessage)
+
+        await push(redirect)
       }
 
       setLoading(false)
     }
 
     loadAsyncFunction()
-  }, [user])
+  }, [user, userPosition])
 
-  return (
-    <Box>
-      {loading ? (
-        <Box>{children}</Box>
-      ) : (
-        <Validate isValid={isConnected} redirect={redirect} message={message}>
-          {children}
-        </Validate>
-      )}
-    </Box>
-  )
+  return <Fragment>{children}</Fragment>
 }
 
 export default memo(Authentication)

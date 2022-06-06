@@ -28,7 +28,7 @@ function RedirectPermission({
       if (!permited) {
         toast.error('Você não tem permissão.')
 
-        push(redirect)
+        await push(redirect)
       }
     }
 

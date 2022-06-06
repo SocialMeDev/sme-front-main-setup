@@ -1,9 +1,11 @@
 import Bond from './bond'
 import BondOptions from './bondOptions'
+import Person from './person'
 
 const Request = {
   Bond,
-  BondOptions
+  BondOptions,
+  Person
 }
 
 export default Request

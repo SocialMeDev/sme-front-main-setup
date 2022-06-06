@@ -2,20 +2,15 @@ import API from 'services/socialMeApis/modules/appAlerts'
 
 import toast from 'utils/toast'
 
-export default async function uploadFileInService({
+export default async function createServiceFormField({
   institutionSlug,
   serviceLetterSlug,
   serviceSubjectSlug,
   serviceSlug,
-  file,
-  onUploadProgress
+  data
 }) {
-  const data = new FormData()
-
-  data.append('file', file)
-
   const params = {
-    operation: ['Service', 'File', 'Upload'],
+    operation: ['Service', 'Form', 'Create'],
     urlParams: {
       institutionSlug,
       serviceLetterSlug,
@@ -25,7 +20,7 @@ export default async function uploadFileInService({
     data
   }
 
-  const response = await API(params, { onUploadProgress })
+  const response = await API(params)
 
   if (response.header.success) {
     toast.success(response.header.title)

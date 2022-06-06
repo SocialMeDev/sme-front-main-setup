@@ -42,7 +42,6 @@ function SingleFileItem({
                   variant="solid"
                   colorScheme="green"
                   onClick={() => {
-                    if (makeAnotherUpload) setIsUploading(false)
                     setIsUploading(false)
                     makeAnotherUpload()
                   }}

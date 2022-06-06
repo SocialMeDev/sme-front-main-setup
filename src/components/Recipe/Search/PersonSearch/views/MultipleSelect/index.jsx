@@ -75,7 +75,10 @@ export default function Select({
                     gap={4}
                     align="center"
                     cursor="pointer"
-                    _hover={{ bg: 'lightPrimary' }}
+                    //onClick={() => onSelect(user.id.toString())}
+                    _hover={{
+                      bg: 'lightPrimary'
+                    }}
                   >
                     <Checkbox value={user.id.toString()} />
                     {informations?.avatar && (

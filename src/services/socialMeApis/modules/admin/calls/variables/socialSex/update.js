@@ -2,7 +2,7 @@ import API from 'services/socialMeApis/modules/admin'
 
 import toast from 'utils/toast'
 
-export default async function updateSocialSex(data, socialSexSlug) {
+export default async function updateSocialSex({ data, socialSexSlug }) {
   const params = {
     operation: ['SocialSex', 'Update'],
     urlParams: {

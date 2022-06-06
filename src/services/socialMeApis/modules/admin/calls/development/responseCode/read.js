@@ -8,11 +8,7 @@ export default async function readResponseCode(data) {
     data
   }
 
-  console.log(`params`, params)
-
   const response = await API(params)
-
-  console.log(`response`, response)
 
   if (!response.header.success) {
     toast.error(response.header.title)

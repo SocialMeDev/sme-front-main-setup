@@ -33,7 +33,6 @@ function QuillFullPage({
 
     if (initialHtml) {
       const delta = quill.clipboard.convert(initialHtml)
-
       quill.setContents(delta, 'silent')
     }
 

@@ -44,8 +44,6 @@ function AuthProvider({ children }) {
 
     const response = await verifyUserToken(selecetdUserPosition)
 
-    console.log(`response`, response)
-
     if (response.header.success) {
       dispatch({
         type: 'SetUser',

@@ -2,7 +2,12 @@ import { Button, ButtonGroup } from './Button'
 import { IconButton } from './IconButton'
 import { Search } from './Search'
 import { Checkbox, CheckboxGroup } from './Checkbox'
-import { FileManager, Dropzone, SingleFileItem } from './Upload'
+import {
+  UploadSingleImage,
+  FileManager,
+  Dropzone,
+  SingleFileItem
+} from './Upload'
 import {
   FormItem,
   FormControl,
@@ -27,6 +32,7 @@ import { Textarea } from './Textarea'
 import { InputTag } from './InputTag'
 
 export {
+  UploadSingleImage,
   Search,
   SingleFileItem,
   InputTag,

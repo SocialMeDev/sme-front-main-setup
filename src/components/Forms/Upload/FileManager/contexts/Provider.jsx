@@ -27,11 +27,14 @@ function FileManagerProvider({
     setUploadProgress(progress)
   }, [])
 
-  const isValidMaxSize = useCallback((size) => {
-    return validateExtension(acceptFiles, size)
-  }, [])
+  const isValidExtension = useCallback(
+    (file) => {
+      return validateExtension(acceptFiles, file)
+    },
+    [acceptFiles]
+  )
 
-  const isValidExtension = useCallback((file) => {
+  const isValidMaxSize = useCallback((file) => {
     return validateMaxSize(file, maxSize)
   }, [])
 
