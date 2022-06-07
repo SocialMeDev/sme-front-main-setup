@@ -1,5 +1,5 @@
 import { patternEmail } from 'utils/patterns'
-import { FormControl, FormLabel } from 'components'
+
 import InputTag from '.'
 
 export default {
@@ -7,6 +7,7 @@ export default {
   title: 'Forms/InputTag/Default',
   args: {
     id: 'name',
+    label: 'Notificações',
     variant: 'outline',
     defaultValues: ['Agora', 'TagLabel'],
     onChange: (tags) => {
@@ -61,6 +62,14 @@ export default {
         }
       }
     },
+    label: {
+      name: 'label',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     id: {
       name: 'id',
       table: {
@@ -73,10 +82,5 @@ export default {
 }
 
 export const Default = (args) => {
-  return (
-    <FormControl>
-      <FormLabel htmlFor={args.id}>Label</FormLabel>
-      <InputTag {...args} />
-    </FormControl>
-  )
+  return <InputTag {...args} />
 }

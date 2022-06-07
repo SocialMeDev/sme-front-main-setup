@@ -62,10 +62,13 @@ function InputTag({
 
   return (
     <Stack>
-      <FormControl>
-        <Flex bg="red">
-          <FormLabel>{label}</FormLabel>
-          <InfoModal />
+      <FormControl mb={0}>
+        <Flex align="center" gap={2} p={1}>
+          <FormLabel m={0}>{label}</FormLabel>
+          <InfoModal
+            title="Atalho"
+            info="Digite ',' após escrever o que deseja inserir na lista."
+          />
         </Flex>
 
         <InputGroup size={size}>

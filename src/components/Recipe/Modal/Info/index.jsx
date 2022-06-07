@@ -6,11 +6,10 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalHeader,
-  ModalOverlay,
   Text
 } from 'components'
-import { useDisclosure } from 'hooks'
 
+import { useDisclosure } from 'hooks'
 import { Question } from 'components/Icons/Interface'
 
 export default function InfoModal({ title, info, children, ...rest }) {
@@ -27,14 +26,15 @@ export default function InfoModal({ title, info, children, ...rest }) {
       />
 
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
         <ModalContent>
+          <ModalCloseButton />
+
           {title && (
-            <ModalHeader color="primary">
-              <Heading>{{ title }}</Heading>
+            <ModalHeader>
+              <Heading color="primary">{title}</Heading>
             </ModalHeader>
           )}
-          <ModalCloseButton />
+
           <ModalBody>
             {info && <Text textAlign="justify">{info}</Text>}
             {children && children}
