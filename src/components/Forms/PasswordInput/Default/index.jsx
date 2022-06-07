@@ -24,9 +24,9 @@ const PasswordInput = forwardRef(({ onChange, onBlur, name, ...rest }, ref) => {
         _hover={{ svg: { color: 'primary' } }}
       >
         {show ? (
-          <EyeHidden onClick={() => setShow(false)} />
+          <EyeHidden aria-label="Oculta senha" onClick={() => setShow(false)} />
         ) : (
-          <Eye5 onClick={() => setShow(true)} />
+          <Eye5 aria-label="Mostrar senha" onClick={() => setShow(true)} />
         )}
       </InputRightElement>
     </InputGroup>

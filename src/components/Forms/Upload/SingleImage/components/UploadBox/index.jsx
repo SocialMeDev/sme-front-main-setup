@@ -14,7 +14,7 @@ function UploadBox({ size, isUploading, imageURL, inputRef, label }) {
       onClick={() => inputRef.current.click()}
       border={imageURL ? '1px solid' : '1px dashed'}
       borderColor="borderColor"
-      p={2}
+      p={1}
       align="center"
       justify="center"
       _hover={{ borderColor: 'primary' }}

@@ -50,6 +50,7 @@ function GalleryButton({
     <Fragment>
       <Box position="absolute" bottom={-3} right={-3}>
         <IconButton
+          aria-label="Abrir galeria de imagens"
           icon={<Briefcase />}
           rounded="full"
           variant="solid"

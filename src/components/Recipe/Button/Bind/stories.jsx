@@ -44,5 +44,10 @@ export const Button = (args) => {
 }
 
 export const Icon = (args) => {
-  return <BindButton {...args} />
+  return (
+    <BindButton
+      aria-label="Demostração do botão de vincular padronizado"
+      {...args}
+    />
+  )
 }

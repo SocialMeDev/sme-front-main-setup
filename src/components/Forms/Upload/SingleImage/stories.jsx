@@ -4,42 +4,24 @@ export default {
   component: UploadImage,
   title: 'Forms/Upload/Image',
   args: {
-    cropProps: {
-      title: 'Recortando imagem',
-      size: '150px'
+    onUpdate: (file) => {
+      console.log(`Updating file...`, file)
     },
-    galleryProps: {
-      title: 'Galeria de imagens',
-      defaultImages: [],
-      onUpload: (file) => {
-        console.log(`Uploading file...`, file)
-      }
+    onDelete: (file) => {
+      console.log(`Deleting file...`, file)
     },
     onUpload: (file) => {
       console.log(`Uploading file...`, file)
     },
+    isLoading: false,
     size: '125px',
     label: 'Anexar foto',
-    defaultImage:
+    rounded: 'md',
+    defaultImages: [],
+    defaultMainImage:
       'https://sme-dataworld.s3.amazonaws.com/prsn/1000000/prsn-avtr/8hh34W1lp8AuI_md.jpg'
   },
   argTypes: {
-    galleryProps: {
-      name: 'galleryProps',
-      table: {
-        type: {
-          summary: 'props}'
-        }
-      }
-    },
-    cropProps: {
-      name: 'cropProps',
-      table: {
-        type: {
-          summary: 'props}'
-        }
-      }
-    },
     size: {
       name: 'size',
       table: {
@@ -48,11 +30,19 @@ export default {
         }
       }
     },
-    defaultImage: {
-      name: 'defaultImage',
+    defaultMainImage: {
+      name: 'defaultMainImage',
       table: {
         type: {
           summary: 'string'
+        }
+      }
+    },
+    isLoading: {
+      name: 'isLoading',
+      table: {
+        type: {
+          summary: 'boolean'
         }
       }
     },
@@ -68,7 +58,23 @@ export default {
       name: 'onUpload',
       table: {
         type: {
-          summary: '(file) => void'
+          summary: '(file: File) => void'
+        }
+      }
+    },
+    onUpdate: {
+      name: 'onUpdate',
+      table: {
+        type: {
+          summary: '(avatarId: string) => void'
+        }
+      }
+    },
+    onDelete: {
+      name: 'onDelete',
+      table: {
+        type: {
+          summary: '(avatarId: string) => void'
         }
       }
     }

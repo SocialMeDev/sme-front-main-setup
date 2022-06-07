@@ -44,5 +44,10 @@ export const Button = (args) => {
 }
 
 export const Icon = (args) => {
-  return <UnbindButton {...args} />
+  return (
+    <UnbindButton
+      aria-label="Demostração do botão de desvincular padronizado"
+      {...args}
+    />
+  )
 }

@@ -67,7 +67,7 @@ function DeleteButton({
       <Button
         variant={variant}
         colorScheme={colorScheme}
-        leftIcon={<TrashDeleteBin />}
+        leftIcon={<TrashDeleteBin color={color} />}
         onClick={shouldOpenModal}
         {...rest}
       >

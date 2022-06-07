@@ -3,7 +3,12 @@ import { memo, useRef, useCallback, useMemo } from 'react'
 import { Input, FormLabel, Flex } from 'components'
 import { useHotKeyPressed } from 'hooks'
 
-function Pagination({ limit = 10, totalItems, onChangePage }) {
+function Pagination({
+  id = 'pagination-shortcut',
+  limit = 10,
+  totalItems,
+  onChangePage
+}) {
   const inputRef = useRef()
 
   const maxPages = useMemo(() => {
@@ -31,8 +36,10 @@ function Pagination({ limit = 10, totalItems, onChangePage }) {
 
   return (
     <Flex align="center" gap={1} minW="max-content">
-      <FormLabel m={0}>Ir para: </FormLabel>
-      <Input ref={inputRef} p={2} w="50px" />
+      <FormLabel htmlFor={id} m={0}>
+        Ir para:{' '}
+      </FormLabel>
+      <Input id={id} ref={inputRef} p={2} w="50px" />
     </Flex>
   )
 }

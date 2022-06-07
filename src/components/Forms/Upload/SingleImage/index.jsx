@@ -15,11 +15,11 @@ function UploadImage({
   onDelete,
   onUpload,
   isLoading,
-  defaultMainImage = {},
+  defaultMainImage,
   defaultImages = [],
   size = '125px',
   label = 'Anexar foto',
-  rounded = 'full'
+  rounded = 'md'
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -28,6 +28,8 @@ function UploadImage({
   const [isUploading, setIsUploading] = useState(false)
 
   const inputRef = useRef()
+
+  console.log(`defaultMainImage`, defaultMainImage)
 
   useEffect(() => {
     const images = formatDefaultImages(defaultImages)
@@ -68,17 +70,19 @@ function UploadImage({
             />
           </Skeleton>
 
-          <ScaleFade show={true}>
-            <GalleryButton
-              size={size}
-              rounded={rounded}
-              images={images}
-              setImages={setImages}
-              onUpload={onUpload}
-              onDelete={onDelete}
-              onUpdate={onUpdate}
-            />
-          </ScaleFade>
+          {defaultMainImage && (
+            <ScaleFade show={true}>
+              <GalleryButton
+                size={size}
+                rounded={rounded}
+                images={images}
+                setImages={setImages}
+                onUpload={onUpload}
+                onDelete={onDelete}
+                onUpdate={onUpdate}
+              />
+            </ScaleFade>
+          )}
         </Box>
       </InputFile>
 

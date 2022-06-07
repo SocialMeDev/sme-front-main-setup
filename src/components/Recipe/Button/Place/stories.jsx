@@ -44,5 +44,10 @@ export const Default = (args) => {
 }
 
 export const Icon = (args) => {
-  return <PlaceButton {...args} />
+  return (
+    <PlaceButton
+      aria-label="Demostração do botão de locais padronizado"
+      {...args}
+    />
+  )
 }

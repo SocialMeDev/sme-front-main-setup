@@ -9,14 +9,16 @@ export default {
     currentPage: 1,
     limit: 10,
     totalItems: 100,
-    showDescription: true
+    onChangePage: (page) => {
+      console.log(`Mudando a página para: `, page)
+    }
   },
   argTypes: {
-    showDescription: {
-      name: 'showDescription',
+    onChangePage: {
+      name: 'onChangePage',
       table: {
         type: {
-          summary: 'boolean'
+          summary: '(page: number) => void'
         }
       }
     },
@@ -41,20 +43,6 @@ export default {
       table: {
         type: {
           summary: 'number'
-        }
-      }
-    },
-    onChangePage: {
-      table: {
-        type: {
-          summary: '(nextPage: number) => void'
-        }
-      }
-    },
-    onChangeLimit: {
-      table: {
-        type: {
-          summary: '(newLimit: number) => void'
         }
       }
     }

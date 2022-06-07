@@ -44,5 +44,10 @@ export const Default = (args) => {
 }
 
 export const Icon = (args) => {
-  return <JudgmentButton {...args} />
+  return (
+    <JudgmentButton
+      aria-label="Demostração do botão de julgamento padronizado"
+      {...args}
+    />
+  )
 }

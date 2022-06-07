@@ -17,6 +17,7 @@ import { useHotKeyPressed } from 'hooks'
 import TagsList from './components/TagsList'
 
 function InputTag({
+  id = 'input-tags',
   label,
   validate,
   onChange,
@@ -64,7 +65,9 @@ function InputTag({
     <Stack>
       <FormControl mb={0}>
         <Flex align="center" gap={2} p={1}>
-          <FormLabel m={0}>{label}</FormLabel>
+          <FormLabel htmlFor={id} m={0}>
+            {label}
+          </FormLabel>
           <InfoModal
             title="Atalho"
             info="Digite ',' após escrever o que deseja inserir na lista."
@@ -72,10 +75,11 @@ function InputTag({
         </Flex>
 
         <InputGroup size={size}>
-          <Input variant={variant} ref={inputRef} {...rest} />
+          <Input id={id} variant={variant} ref={inputRef} {...rest} />
 
           <InputRightElement>
             <IconButton
+              aria-label="Adicionar um novo item nesta lista"
               roundedTopLeft="none"
               roundedBottomLeft="none"
               size={size}

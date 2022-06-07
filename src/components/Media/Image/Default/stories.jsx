@@ -32,32 +32,6 @@ export default {
           summary: 'string'
         }
       }
-    },
-    loading: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      name: 'loading',
-      control: { type: 'radio' },
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    },
-    onLoad: {
-      name: 'onLoad',
-      table: {
-        type: {
-          summary: '() => void'
-        }
-      }
-    },
-    onError: {
-      name: 'onError',
-      table: {
-        type: {
-          summary: '() => void'
-        }
-      }
     }
   }
 }
