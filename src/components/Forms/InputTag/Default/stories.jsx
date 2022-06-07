@@ -1,18 +1,19 @@
 import { patternEmail } from 'utils/patterns'
-
+import { FormControl, FormLabel } from 'components'
 import InputTag from '.'
 
 export default {
   component: InputTag,
   title: 'Forms/InputTag/Default',
   args: {
-    validate: (value) => {
-      return patternEmail.test(value)
-    },
+    id: 'name',
     variant: 'outline',
     defaultValues: ['Agora', 'TagLabel'],
     onChange: (tags) => {
       console.log(`Tags`, tags)
+    },
+    validate: (value) => {
+      return patternEmail.test(value)
     }
   },
   argTypes: {
@@ -59,10 +60,23 @@ export default {
           summary: 'string[]'
         }
       }
+    },
+    id: {
+      name: 'id',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     }
   }
 }
 
 export const Default = (args) => {
-  return <InputTag {...args} />
+  return (
+    <FormControl>
+      <FormLabel htmlFor={args.id}>Label</FormLabel>
+      <InputTag {...args} />
+    </FormControl>
+  )
 }

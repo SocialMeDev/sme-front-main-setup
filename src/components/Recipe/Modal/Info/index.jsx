@@ -1,4 +1,5 @@
 import {
+  Heading,
   IconButton,
   Modal,
   ModalBody,
@@ -28,7 +29,11 @@ export default function InfoModal({ title, info, children, ...rest }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          {title && <ModalHeader color="primary">{title}</ModalHeader>}
+          {title && (
+            <ModalHeader color="primary">
+              <Heading>{{ title }}</Heading>
+            </ModalHeader>
+          )}
           <ModalCloseButton />
           <ModalBody>
             {info && <Text textAlign="justify">{info}</Text>}

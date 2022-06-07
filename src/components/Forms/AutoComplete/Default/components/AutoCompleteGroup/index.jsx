@@ -7,7 +7,7 @@ function AutoCompleteGroup({ isOpen, children }) {
     <ScrollView
       display={isOpen ? 'block' : 'none'}
       p={2}
-      mt={2}
+      mt={1}
       spacing={1}
       bg="light"
       rounded="md"

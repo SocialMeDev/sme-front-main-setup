@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { Flex, Switch, Text, Heading } from 'components'
 import { useColorModeValue } from 'hooks'
+
 const CheckboxItem = ({ isChecked, title, description }) => {
   return (
     <Flex

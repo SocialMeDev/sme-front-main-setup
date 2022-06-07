@@ -1,7 +1,10 @@
 import { memo, useRef, useState, useCallback, useEffect } from 'react'
 
 import {
-  Tooltip,
+  FormControl,
+  FormLabel,
+  Flex,
+  InfoModal,
   IconButton,
   Stack,
   Input,
@@ -14,6 +17,7 @@ import { useHotKeyPressed } from 'hooks'
 import TagsList from './components/TagsList'
 
 function InputTag({
+  label,
   validate,
   onChange,
   defaultValues = [],
@@ -21,19 +25,18 @@ function InputTag({
   size,
   ...rest
 }) {
-  const [focus, setFocus] = useState(false)
   const [tags, setTags] = useState(defaultValues)
 
   const inputRef = useRef()
 
   useHotKeyPressed('Comma', () => {
-    if (focus) addTag(inputRef.current.value)
+    const isInputFocused = inputRef.current === document.activeElement
+
+    if (isInputFocused) addTag(inputRef.current.value)
   })
 
   const addTag = useCallback((newTag) => {
-    if (newTag.length > 0) {
-      setTags((oldTags) => [...oldTags, newTag])
-    }
+    if (newTag.length > 0) setTags((oldTags) => [...oldTags, newTag])
 
     setTimeout(() => {
       inputRef.current.value = ''
@@ -49,7 +52,7 @@ function InputTag({
     [tags]
   )
 
-  const editTag = useCallback((tagValue) => {
+  const updateTag = useCallback((tagValue) => {
     inputRef.current.value = tagValue
   }, [])
 
@@ -59,31 +62,30 @@ function InputTag({
 
   return (
     <Stack>
-      <InputGroup size={size}>
-        <Input
-          variant={variant}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          ref={inputRef}
-          {...rest}
-        />
+      <FormControl>
+        <Flex bg="red">
+          <FormLabel>{label}</FormLabel>
+          <InfoModal />
+        </Flex>
 
-        <InputRightElement>
-          <Tooltip label='Apertar "," para salvar o item'>
+        <InputGroup size={size}>
+          <Input variant={variant} ref={inputRef} {...rest} />
+
+          <InputRightElement>
             <IconButton
               roundedTopLeft="none"
               roundedBottomLeft="none"
               size={size}
-              onClick={() => addTag(inputRef?.current?.value || '')}
               variant="solid"
+              onClick={() => addTag(inputRef.current.value)}
               icon={<Plus boxSize={8} />}
             />
-          </Tooltip>
-        </InputRightElement>
-      </InputGroup>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
 
       <TagsList
-        editTag={editTag}
+        updateTag={updateTag}
         tags={tags}
         size={size}
         removeTag={removeTag}

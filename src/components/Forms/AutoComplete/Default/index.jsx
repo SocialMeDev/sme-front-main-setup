@@ -66,10 +66,15 @@ const AutoComplete = ({
 
       <AutoCompleteGroup isOpen={isOpen}>
         {Children.map(children, (child) => {
-          return cloneElement(<FocusableBox p={1}>{child}</FocusableBox>, {
-            value,
-            onSelect
-          })
+          return cloneElement(
+            <FocusableBox ps={2} py={1}>
+              {child}
+            </FocusableBox>,
+            {
+              value,
+              onSelect
+            }
+          )
         })}
       </AutoCompleteGroup>
     </Box>
