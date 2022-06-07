@@ -50,7 +50,7 @@ const getColors = () => {
     },
     //feedbacks
     success: {
-      default: 'green.600',
+      default: 'green.500',
       _dark: 'green.400'
     },
     successHover: {
@@ -58,7 +58,7 @@ const getColors = () => {
       _dark: 'green.500'
     },
     danger: {
-      default: 'red.600',
+      default: 'red.500',
       _dark: 'red.400'
     },
     dangerHover: {
