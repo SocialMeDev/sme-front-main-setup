@@ -4,7 +4,7 @@ import { Center } from 'components'
 
 export default {
   component: Spinner,
-  title: 'Feedback/Spinner/Default',
+  title: 'Feedback/Loader/Spinner',
   args: {
     thickness: '0.2rem',
     speed: '0.65s',

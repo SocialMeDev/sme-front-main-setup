@@ -7,6 +7,7 @@ export default {
   component: NativeSelect,
   title: 'Forms/Select/Native',
   args: {
+    id: 'select',
     size: 'sm',
     options: [
       {
@@ -61,6 +62,14 @@ export default {
         }
       }
     },
+    id: {
+      name: 'id',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     onChange: {
       name: 'onChange',
       table: {
@@ -77,7 +86,7 @@ export const Native = (args) => {
 
   return (
     <Box>
-      <FormLabel>Select</FormLabel>
+      <FormLabel htmlFor={args.id}>Select</FormLabel>
 
       <NativeSelect {...args} {...register('select')}>
         {args.options.map(({ name, code }) => (

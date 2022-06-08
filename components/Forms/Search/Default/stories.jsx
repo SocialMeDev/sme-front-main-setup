@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Text } from 'components'
+import { FormControl, FormLabel, Box, Text } from 'components'
 
 import Search from '.'
 
@@ -7,6 +7,7 @@ export default {
   component: Search,
   title: 'Forms/Search/Default',
   args: {
+    id: 'search',
     type: 'text',
     size: 'sm'
   },
@@ -15,6 +16,14 @@ export default {
       options: ['sm', 'md', 'lg'],
       control: { type: 'radio' },
       name: 'size',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    id: {
+      name: 'id',
       table: {
         type: {
           summary: 'string'
@@ -37,7 +46,11 @@ export const Common = (args) => {
 
   return (
     <Box>
-      <Search {...args} onSearch={(value) => setFilter(value)} />
+      <FormControl>
+        <FormLabel htmlFor={args.id}>
+          <Search {...args} onSearch={(value) => setFilter(value)} />
+        </FormLabel>
+      </FormControl>
 
       <Text fontSize="md">Search: {filter}</Text>
     </Box>

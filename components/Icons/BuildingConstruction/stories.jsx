@@ -29,5 +29,5 @@ export default {
   }
 }
 export const Common = (args) => {
-  return <IconsContainer Icons={Icons} {...args} />
+  return <IconsContainer Icons={{ ...Icons }} {...args} />
 }

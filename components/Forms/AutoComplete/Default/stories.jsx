@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Text, Box, FormLabel } from 'components'
+import { Text, Box } from 'components'
 
 import AutoComplete from '.'
 
@@ -8,9 +8,11 @@ export default {
   title: 'Forms/AutoComplete/Default',
   args: {
     size: 'sm',
+    label: 'Frutas',
+    name: 'fruits',
     valueName: 'code',
     labelName: 'name',
-    value: '2'
+    value: '1'
   },
   argTypes: {
     size: {
@@ -22,6 +24,22 @@ export default {
       table: {
         type: {
           summary: '["sm", "md", "lg"]'
+        }
+      }
+    },
+    label: {
+      name: 'label',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    name: {
+      name: 'name',
+      table: {
+        type: {
+          summary: 'string'
         }
       }
     },
@@ -41,26 +59,11 @@ export default {
         }
       }
     },
-    options: {
-      table: {
-        type: {
-          summary: '[{ [string]: any, [string]: string }]'
-        }
-      }
-    },
     value: {
       name: 'value',
       table: {
         type: {
           summary: 'string'
-        }
-      }
-    },
-    onChange: {
-      name: 'onChange',
-      table: {
-        type: {
-          summary: '(optionValue) => void'
         }
       }
     }
@@ -74,10 +77,10 @@ export const Default = (args) => {
 
   return (
     <Box>
-      <FormLabel>AutoComplete</FormLabel>
-
       <AutoComplete {...args} maxW="300px">
-        <Text>Teste</Text>
+        <Text>Item 1</Text>
+        <Text>Item 2</Text>
+        <Text>Item 3</Text>
       </AutoComplete>
 
       <Text mt={4}>Valores: {watch('AutoComplete')}</Text>

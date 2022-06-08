@@ -4,8 +4,8 @@ export default {
   component: DeleteButton,
   title: 'Recipe/Button/Delete',
   args: {
-    variant: 'solid',
-    colorScheme: 'red',
+    variant: 'ghost',
+    colorScheme: 'gray',
     title: 'Você tem certeza disso?',
     text: 'Você realmente quer deletar  este registro?',
     description: 'Você não poderá voltar atrás',
@@ -50,5 +50,10 @@ export const Default = (args) => {
 }
 
 export const Icon = (args) => {
-  return <DeleteButton {...args} />
+  return (
+    <DeleteButton
+      aria-label="Demostração do botão de vincular padronizado"
+      {...args}
+    />
+  )
 }

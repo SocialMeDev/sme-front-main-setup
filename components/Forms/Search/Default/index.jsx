@@ -8,15 +8,10 @@ const SearchInput = ({ onSearch, size, width, ...rest }) => {
 
   return (
     <InputGroup size={size} width={width}>
-      <Input
-        ref={inputRef}
-        bg="bgContent"
-        rounded="md"
-        autoComplete="off"
-        {...rest}
-      />
+      <Input ref={inputRef} bg="bgContent" rounded="md" {...rest} />
       <InputRightElement>
         <IconButton
+          aria-label={rest['aria-label'] || 'Pesquisar item'}
           roundedTopLeft="none"
           roundedBottomLeft="none"
           size={size}

@@ -12,6 +12,7 @@ import * as Recipe from './Recipe'
 import * as Templates from './Templates'
 import * as Validation from './Validation'
 import * as MenuCategory from './Menu'
+
 const { Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList } =
   MenuCategory
 const { Dashboard, LandingPage } = Templates
@@ -100,8 +101,17 @@ const {
   TabPanels,
   Tabs
 } = Navigation
-const { Box, Stack, Divider, Center, Flex, SimpleGrid, Grid, GridItem } =
-  Layouts
+const {
+  FocusableBox,
+  Box,
+  Stack,
+  Divider,
+  Center,
+  Flex,
+  SimpleGrid,
+  Grid,
+  GridItem
+} = Layouts
 const {
   PaginationDescription,
   Descriptions,
@@ -306,7 +316,6 @@ export {
   AccordionItem,
   AccordionPanel,
   // Navigation
-
   Link,
   LinkBox,
   LinkOverlay,
@@ -352,6 +361,7 @@ export {
   Textarea,
   InputTag,
   // Layout
+  FocusableBox,
   Box,
   Stack,
   Divider,

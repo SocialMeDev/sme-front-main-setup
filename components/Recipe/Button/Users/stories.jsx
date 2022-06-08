@@ -44,5 +44,10 @@ export const Button = (args) => {
 }
 
 export const Icon = (args) => {
-  return <UsersButton {...args} />
+  return (
+    <UsersButton
+      aria-label="Demostração do botão de usuários padronizado"
+      {...args}
+    />
+  )
 }

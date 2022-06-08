@@ -13,6 +13,7 @@ function LimitSelect({ limit, onChangeLimit }) {
   }, [])
   return (
     <NativeSelect
+      aria-label="Opções de limit de paginação."
       maxW="200px"
       onChange={({ target }) => onChangeLimit(target.value)}
       defaultValue={limit}

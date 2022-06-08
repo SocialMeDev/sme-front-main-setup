@@ -44,5 +44,10 @@ export const Default = (args) => {
 }
 
 export const Icon = (args) => {
-  return <RefuseButton {...args} />
+  return (
+    <RefuseButton
+      aria-label="Demostração do botão de recusar padronizado"
+      {...args}
+    />
+  )
 }

@@ -40,5 +40,12 @@ export default {
 }
 
 export const Default = (args) => {
-  return <UpdateButton {...args}>Novk registro </UpdateButton>
+  return (
+    <UpdateButton
+      aria-label="Demostração do botão de editar padronizado"
+      {...args}
+    >
+      Novk registro{' '}
+    </UpdateButton>
+  )
 }

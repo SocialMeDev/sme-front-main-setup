@@ -13,29 +13,29 @@ function Calendar({ selectedDate, onSelectDate, ...rest }) {
   }, [])
 
   return (
-    <ScaleFade>
-      <Flex ps={2} justify="space-between" align="center" {...rest}>
+    <ScaleFade show={true}>
+      <Flex mb={2} ps={2} justify="space-between" align="center" {...rest}>
         <Text fontSize="md">
           {formatedMonth} de {year}
         </Text>
 
-        <Flex gap={2} color="borderColor">
+        <Flex gap={2}>
           <Center
+            aria-label="Ir para o mês anterior"
             onClick={previousMonth}
             as="button"
             rounded="full"
             _hover={{ bg: 'primary', color: 'light' }}
-            pe="2px"
           >
             <Arrow8 />
           </Center>
 
           <Center
+            aria-label="Ir para o próximo mês"
             onClick={nextMonth}
             as="button"
             rounded="full"
             _hover={{ bg: 'primary', color: 'light' }}
-            ps="2px"
           >
             <Arrow5 />
           </Center>

@@ -1,23 +1,26 @@
 import { memo } from 'react'
 import { Badge } from '@chakra-ui/react'
 
-import { variants } from './style'
 import { useSizeValue } from 'hooks'
 
 function BadgeDefault({
   children,
+  colorScheme = 'green',
   variant = 'outline',
-  size = useSizeValue('sm', 'md', 'lg'),
+  size = useSizeValue('xs', 'sm', 'md'),
   ...rest
 }) {
   return (
     <Badge
       px={1}
       py={0.5}
-      fontWeight="500"
-      border="none"
       size={size}
-      {...variants[variant]}
+      variant={variant}
+      fontWeight="500"
+      bg={colorScheme === 'green' && 'green.600'}
+      colorScheme={colorScheme}
+      letterSpacing={1}
+      oapcity={1}
       {...rest}
     >
       {children}

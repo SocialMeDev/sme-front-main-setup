@@ -1,7 +1,7 @@
 import { memo } from 'react'
-import { useColorModeValue } from '@chakra-ui/react'
 
 import { Box, Flex, Image, Text, NextLink } from 'components'
+import { useColorModeValue } from 'hooks'
 import { getFileImage } from 'utils/assets'
 import { getFormatedBytes } from 'utils/transforms/number'
 
@@ -13,10 +13,10 @@ function FileItem({ id, public_url, extension, name, size }) {
         cursor="pointer"
         transition="all 0.4s"
         rounded="md"
-        _hover={{ bg: useColorModeValue('gray.100', 'gray.600') }}
+        _hover={{ bg: useColorModeValue('gray.50', 'gray.600') }}
         gap={2}
       >
-        <Image boxSize="40px" src={getFileImage(extension)} />
+        <Image boxSize="40px" src={getFileImage(extension)} alt={name} />
         <Box>
           <Text>{name}</Text>
           <Text variant="secondary">

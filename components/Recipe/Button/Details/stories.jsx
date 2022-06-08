@@ -40,5 +40,10 @@ export default {
 }
 
 export const Default = (args) => {
-  return <DetailsButton {...args} />
+  return (
+    <DetailsButton
+      aria-label="Demostração do botão de detalhes padronizado"
+      {...args}
+    />
+  )
 }

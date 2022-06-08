@@ -1,3 +1,5 @@
+import { FormControl, FormLabel } from 'components'
+
 import Input from '.'
 
 export default {
@@ -43,5 +45,10 @@ export default {
 }
 
 export const Default = (args) => {
-  return <Input maxW="300px" {...args} />
+  return (
+    <FormControl>
+      <FormLabel htmlFor="input">Input</FormLabel>
+      <Input id="input" maxW="300px" {...args} />
+    </FormControl>
+  )
 }

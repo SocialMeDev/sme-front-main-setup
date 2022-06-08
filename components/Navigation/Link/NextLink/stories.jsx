@@ -6,12 +6,13 @@ export default {
   component: NextLink,
   title: 'Navigation/Link/NextLink',
   args: {
+    download: false,
     href: '/my-url',
-    target: '_self'
+    target: '_blank'
   },
   argTypes: {
     target: {
-      values: ['_self', '_blank'],
+      options: ['_self', '_blank'],
       control: { type: 'radio' },
       name: 'target',
       table: {
@@ -27,13 +28,21 @@ export default {
           summary: 'string'
         }
       }
+    },
+    download: {
+      name: 'download',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      }
     }
   }
 }
 
 export const Default = (args) => {
   return (
-    <NextLink {...args}>
+    <NextLink display="inline-block" {...args}>
       <Center color="light" p={6} w="250px" h="250px" bg="primary">
         <Text>Este conteúdo é um Link</Text>
       </Center>

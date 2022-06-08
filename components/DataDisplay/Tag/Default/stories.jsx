@@ -15,7 +15,7 @@ export default {
   title: 'DataDisplay/Tag/Default',
   args: {
     variant: 'solid',
-    colorScheme: 'green',
+    colorScheme: 'primary',
     size: 'md'
   },
   argTypes: {

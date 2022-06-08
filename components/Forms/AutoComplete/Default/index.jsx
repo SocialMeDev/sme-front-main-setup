@@ -1,79 +1,84 @@
 import {
-  forwardRef,
+  Children,
   cloneElement,
   memo,
-  useMemo,
+  useEffect,
+  useCallback,
   useRef,
   useState
 } from 'react'
 import { useOutsideClick } from '@chakra-ui/react'
 
-import { Input, InputRightElement, InputGroup, Box } from 'components'
+import {
+  FocusableBox,
+  FormLabel,
+  Input,
+  InputRightElement,
+  InputGroup,
+  Box
+} from 'components'
 import { useSizeValue, useHotKeyPressed } from 'hooks'
 import { Arrow } from 'components/Icons/Interface'
 import AutoCompleteGroup from './components/AutoCompleteGroup'
 
-const AutoComplete = forwardRef(
-  (
-    {
-      labelName = 'label',
-      valueName = 'value',
-      value = '',
-      options = [],
-      children,
-      size = useSizeValue('xs', 'sm', 'md'),
-      ...rest
-    },
-    ref
-  ) => {
-    const [isOpen, setIsOpen] = useState(false)
-    const [focus, setFocus] = useState(false)
+const AutoComplete = ({
+  name = 'complete',
+  label = 'AutoComplete',
+  value = '',
+  children,
+  size = useSizeValue('xs', 'sm', 'md'),
+  ...rest
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-    const containerRef = useRef()
+  const containerRef = useRef()
+  const inputRef = useRef()
 
-    useHotKeyPressed('Space', () => {
-      if (focus) setIsOpen(true)
-    })
+  useHotKeyPressed('Space', () => {
+    if (inputRef.current === document.activeElement) setIsOpen(true)
+  })
 
-    useOutsideClick({
-      ref: containerRef,
-      handler: () => setIsOpen(false)
-    })
+  useOutsideClick({
+    ref: containerRef,
+    handler: () => setIsOpen(false)
+  })
 
-    const inputValue = useMemo(() => {
-      let labelBySelectedValue = ''
+  useEffect(() => {
+    if (inputRef.current) inputRef.current.value = value
+  }, [value])
 
-      options.forEach((option) => {
-        if (value.toString().includes(option[valueName])) {
-          labelBySelectedValue = option[labelName]
-        }
-      })
+  const onSelect = useCallback((value) => {}, [])
 
-      return labelBySelectedValue
-    }, [value])
+  return (
+    <Box position="relative" ref={containerRef} {...rest}>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <InputGroup size={size}>
+        <Input
+          id={name}
+          ref={inputRef}
+          onClick={() => setIsOpen(true)}
+          onChange={() => {}}
+        />
+        <InputRightElement>
+          <Arrow />
+        </InputRightElement>
+      </InputGroup>
 
-    return (
-      <Box position="relative" ref={containerRef} {...rest}>
-        <InputGroup cursor="pointer" size={size}>
-          <Input
-            ref={ref}
-            value={inputValue}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-            onClick={() => setIsOpen(true)}
-            onChange={() => {}}
-          />
-          <InputRightElement>
-            <Arrow />
-          </InputRightElement>
-        </InputGroup>
-
-        <AutoCompleteGroup isOpen={isOpen}>
-          {cloneElement(children)}
-        </AutoCompleteGroup>
-      </Box>
-    )
-  }
-)
+      <AutoCompleteGroup isOpen={isOpen}>
+        {Children.map(children, (child) => {
+          return cloneElement(
+            <FocusableBox ps={2} py={1}>
+              {child}
+            </FocusableBox>,
+            {
+              value,
+              onSelect
+            }
+          )
+        })}
+      </AutoCompleteGroup>
+    </Box>
+  )
+}
 
 export default memo(AutoComplete)

@@ -7,27 +7,9 @@ export default {
   title: 'DataDisplay/ScrollView/Default',
   args: {
     width: 'auto',
-    maxHeight: '200px',
-    scrollWidth: '0.5rem',
-    scrollColor: 'borderColor'
+    maxHeight: '200px'
   },
   argTypes: {
-    scrollWidth: {
-      name: 'scrollWidth',
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    },
-    scrollColor: {
-      name: 'scrollColor',
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    },
     width: {
       name: 'width',
       table: {

@@ -44,5 +44,10 @@ export const Default = (args) => {
 }
 
 export const Icon = (args) => {
-  return <AcceptButton {...args} />
+  return (
+    <AcceptButton
+      aria-label="Demostração do botão de aceitação padronizado"
+      {...args}
+    />
+  )
 }

@@ -6,13 +6,15 @@ export default {
   component: InputTag,
   title: 'Forms/InputTag/Default',
   args: {
-    validate: (value) => {
-      return patternEmail.test(value)
-    },
+    id: 'name',
+    label: 'Notificações',
     variant: 'outline',
     defaultValues: ['Agora', 'TagLabel'],
     onChange: (tags) => {
       console.log(`Tags`, tags)
+    },
+    validate: (value) => {
+      return patternEmail.test(value)
     }
   },
   argTypes: {
@@ -57,6 +59,22 @@ export default {
       table: {
         type: {
           summary: 'string[]'
+        }
+      }
+    },
+    label: {
+      name: 'label',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    id: {
+      name: 'id',
+      table: {
+        type: {
+          summary: 'string'
         }
       }
     }

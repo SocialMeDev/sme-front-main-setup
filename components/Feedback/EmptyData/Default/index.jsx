@@ -17,16 +17,11 @@ function EmptyData({ title, description, children, size, fontSize, ...rest }) {
     >
       <Lottie size={size} src={EmptyBox} />
       <Flex direction="column" align="center" justify="center" gap={2}>
-        {title && (
-          <Heading textAlign="center" size={fontSize}>
-            {title}
-          </Heading>
-        )}
-        {description && (
-          <Text variant="secondary" textAlign="center">
-            {description}
-          </Text>
-        )}
+        <Heading textAlign="center" size={fontSize}>
+          {title}
+        </Heading>
+
+        {description && <Text textAlign="center">{description}</Text>}
         {children}
       </Flex>
     </Flex>

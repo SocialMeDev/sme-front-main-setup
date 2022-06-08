@@ -44,5 +44,10 @@ export const Button = (args) => {
 }
 
 export const Icon = (args) => {
-  return <GroupButton {...args} />
+  return (
+    <GroupButton
+      aria-label="Demostração do botão de grupos padronizado"
+      {...args}
+    />
+  )
 }

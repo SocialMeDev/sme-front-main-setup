@@ -66,7 +66,7 @@ const getColors = () => {
       _dark: 'red.500'
     },
     info: {
-      default: 'blue.500',
+      default: 'blue.600',
       _dark: 'blue.400'
     },
     infoHover: {
@@ -74,7 +74,7 @@ const getColors = () => {
       _dark: 'blue.500'
     },
     warning: {
-      default: 'yellow.500',
+      default: 'yellow.600',
       _dark: 'yellow.400'
     },
     warningHover: {
