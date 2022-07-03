@@ -2,6 +2,7 @@ import { memo, useMemo, Fragment } from 'react'
 
 import { Flex } from 'components'
 import PageItems from './components/PageItems'
+import PageShortCut from './components/PageShortCut'
 
 function MiniPagination({
   currentPage = 1,
@@ -15,22 +16,25 @@ function MiniPagination({
 
   return (
     <Fragment>
-      {totalItems > limit && (
-        <Flex
-          p={4}
-          justify="center"
-          align="center"
-          direction={{ base: 'column', md: 'row' }}
-        >
-          <Flex gap={2}>
-            <PageItems
-              maxPages={maxPages}
-              currentPage={currentPage}
-              onChangePage={onChangePage}
-            />
-          </Flex>
+      <Flex
+        p={4}
+        justify="center"
+        align="center"
+        direction={{ base: 'column', md: 'row' }}
+      >
+        <Flex gap={2}>
+          <PageItems
+            maxPages={maxPages}
+            currentPage={currentPage}
+            onChangePage={onChangePage}
+          />
+          <PageShortCut
+            limit={limit}
+            totalItems={totalItems}
+            onChangePage={onChangePage}
+          />
         </Flex>
-      )}
+      </Flex>
     </Fragment>
   )
 }

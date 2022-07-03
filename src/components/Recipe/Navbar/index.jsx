@@ -1,9 +1,9 @@
 import { memo, Fragment } from 'react'
+import dynamic from 'next/dynamic'
 
 import { Flex, Stack } from 'components'
 import AuthenticatedUsersModal from './plugins/AuthenticatedUsersModal'
 import LoggedUserMenu from './plugins/LoggedUserMenu'
-import LoginButton from './plugins/LoginButton'
 import Logo from './plugins/Logo'
 import MessagesButton from './plugins/MessagesButton'
 import NotificationButton from './plugins/NotificationButton'
@@ -12,6 +12,10 @@ import SettingsButton from './plugins/SettingsButton'
 import SidebarCollapseButton from './plugins/SidebarCollapseButton'
 import SocialMeModulesButton from './plugins/SocialMeModulesButton'
 import ToggleThemeButton from './plugins/ToggleThemeButton'
+
+const LoginButton = dynamic(() => import('./plugins/LoginButton'), {
+  ssr: false
+})
 
 const plugins = {
   AuthenticatedUsersModal,
@@ -46,11 +50,11 @@ function Navbar({ left, center, right, bg = 'bgContent', ...rest }) {
   return (
     <Flex
       as="nav"
-      minH="50px"
+      maxH="50px"
       px={1}
       borderBottomWidth={1}
-      borderColor="borderColor"
       bg={bg}
+      borderColor="borderColor"
       justify="space-between"
       {...rest}
     >

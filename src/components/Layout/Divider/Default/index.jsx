@@ -6,7 +6,7 @@ import { Divider } from '@chakra-ui/react'
 import DividerWithText from './components/DividerWithText'
 import DividerWithComponent from './components/DividerWithComponent'
 
-function DividerDefault({ children, text, spacing = 4, ...rest }) {
+function DividerDefault({ children, text, spacing = 2, ...rest }) {
   if (text) {
     return <DividerWithText {...rest} text={text} />
   }
@@ -16,7 +16,7 @@ function DividerDefault({ children, text, spacing = 4, ...rest }) {
   }
   return (
     <Box my={spacing}>
-      <Divider p={0} {...rest} />
+      <Divider {...rest} />
     </Box>
   )
 }

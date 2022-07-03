@@ -4,12 +4,20 @@ import EmptyBox from './files/empty-box.json'
 
 import { Lottie, Flex, Heading, Text } from 'components'
 
-function EmptyData({ title, description, children, size, fontSize, ...rest }) {
+function EmptyData({
+  title,
+  description,
+  children,
+  size,
+  fontSize,
+  height = '300px',
+  ...rest
+}) {
   return (
     <Flex
       p={4}
       gap={2}
-      h="100%"
+      height={height}
       direction="column"
       align="center"
       justify="center"

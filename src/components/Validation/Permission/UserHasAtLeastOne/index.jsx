@@ -12,8 +12,6 @@ function UserHasAtLeastOnePermission({ children, userPermissions, redirect }) {
 
   useEffect(() => {
     async function checkPermission() {
-      setLoading(true)
-
       const permited = userPermissions.length > 0
 
       if (!permited) {

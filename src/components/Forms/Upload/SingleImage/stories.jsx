@@ -14,7 +14,6 @@ export default {
       console.log(`Uploading file...`, file)
     },
     isLoading: false,
-    size: '125px',
     label: 'Anexar foto',
     rounded: 'md',
     defaultImages: [],
@@ -48,6 +47,16 @@ export default {
     },
     label: {
       name: 'label',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    rounded: {
+      options: ['md', 'full'],
+      control: { type: 'radio' },
+      name: 'rounded',
       table: {
         type: {
           summary: 'string'

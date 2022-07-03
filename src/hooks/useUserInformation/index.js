@@ -29,6 +29,8 @@ export default function useUserInformation() {
   const getContact = useCallback(() => {
     const contact = user.main_contact
 
+    if (!contact) return ''
+
     return contact.length < 12
       ? brazilianTelephoneMask(contact)
       : contact.toLowerCase()
@@ -37,10 +39,13 @@ export default function useUserInformation() {
   const getContactType = useCallback(() => {
     const contact = user.main_contact
 
+    if (!contact) return ''
+
     return contact.length === 13 ? 'Telefone ( +00 (00) 00000-0000 )' : 'Email'
   }, [])
 
   const hasUser = useCallback(() => {
+    if (!user) return
     if (Object.keys(user).length !== 0) {
       return true
     }

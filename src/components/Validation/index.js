@@ -1,4 +1,4 @@
-import IsAuthenticated from './Authentication'
+import IsConnected from './IsConnected'
 import {
   HiddenPermission,
   RedirectPermission,
@@ -7,7 +7,7 @@ import {
 import HasUser from './HasUser'
 
 export {
-  IsAuthenticated,
+  IsConnected,
   HiddenPermission,
   RedirectPermission,
   UserHasAtLeastOnePermission,

@@ -18,11 +18,7 @@ export default async function listGroupPermissions({
     }
   }
 
-  console.log(`Group Permission Show params`, params)
-
   const response = await API(params)
-
-  console.log(`Group Permission Show response`, response)
 
   if (!response?.header?.success) {
     toast.error(response?.header?.title)

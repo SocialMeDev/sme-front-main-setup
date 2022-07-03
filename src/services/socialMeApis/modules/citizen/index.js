@@ -1,6 +1,5 @@
 import axios from 'axios'
 import prepareParameters from './functions/prepareParameters'
-
 import treatResponseError from 'services/socialMeApis/function/treatResponseError'
 
 async function citizenAPI(paramsReceived, extraConfigs = {}) {
@@ -9,10 +8,8 @@ async function citizenAPI(paramsReceived, extraConfigs = {}) {
   const response = await axios({ ...treatedParams, ...extraConfigs })
     .then(async (res) => {
       const response = res.data
-      if (res?.headers['content-type'] === 'application/pdf') {
-        return response
-      }
-      response.success = response?.header?.success || false
+
+      response.success = response.header.success || false
 
       return response
     })

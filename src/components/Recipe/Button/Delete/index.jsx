@@ -92,12 +92,11 @@ function DeleteButton({
             <Stack direction="column" align="center">
               <Icon color="red.500" as={TrashDeleteBin} boxSize="16" />
               <Heading>{title}</Heading>
-              {text && <Text>{text}</Text>}
-              {description && (
-                <Text color="red.500" fontWeight="bold">
-                  {description}
-                </Text>
-              )}
+              {text && <Text textAlign="center">{text}</Text>}
+
+              <Text color="red.500" fontWeight="bold">
+                {description}
+              </Text>
             </Stack>
           </ModalBody>
 

@@ -14,9 +14,6 @@ const MenuItemDefault = forwardRef(
         cursor="pointer"
         rounded="md"
         fontSize={fontSize}
-        _focus={{
-          bg: 'lightPrimary'
-        }}
         {...rest}
       >
         {children}

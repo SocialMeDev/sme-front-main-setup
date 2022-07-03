@@ -14,7 +14,8 @@ function Pagination({
   onChangeLimit,
   showDescription = true,
   descriptionLabel,
-  hasShortCut = true
+  hasShortCut = true,
+  ...rest
 }) {
   const maxPages = useMemo(() => {
     return Math.ceil(totalItems / limit)
@@ -34,6 +35,8 @@ function Pagination({
         justify={showDescription ? 'space-between' : 'center'}
         align="center"
         direction={{ base: 'column', md: 'row' }}
+        gap={{ base: 2, md: 0 }}
+        {...rest}
       >
         <Fragment>
           {showDescription && (

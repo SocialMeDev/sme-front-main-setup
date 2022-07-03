@@ -19,7 +19,7 @@ function MenuGroup({ sidebarItems }) {
               {childrens?.map((item) => (
                 <MenuItem
                   isOpen={isOpen}
-                  key={item.label}
+                  key={item.href}
                   groupHref={href}
                   item={item}
                 />

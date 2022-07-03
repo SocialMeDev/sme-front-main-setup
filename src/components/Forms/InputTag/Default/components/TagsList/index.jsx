@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { memo, Fragment, useCallback } from 'react'
 
 import { Flex, Tag, TagLabel, TagCloseButton } from 'components'
 
@@ -15,24 +15,28 @@ function TagsList({ updateTag, tags, size, removeTag, validate }) {
   }, [])
 
   return (
-    <Flex gap={2} flexWrap="wrap">
-      {tags.map((tag) => {
-        return (
-          <Tag
-            cursor="pointer"
-            key={tag}
-            size={size}
-            color="light"
-            bg={isValidValue(tag) ? 'success' : 'danger'}
-          >
-            <TagLabel py={1} onClick={() => onUpdateTag(tag)}>
-              {tag}
-            </TagLabel>
-            <TagCloseButton onClick={() => removeTag(tag)()} />
-          </Tag>
-        )
-      })}
-    </Flex>
+    <Fragment>
+      {tags.length > 0 && (
+        <Flex gap={2} flexWrap="wrap">
+          {tags.map((tag) => {
+            return (
+              <Tag
+                cursor="pointer"
+                color="light"
+                bg={isValidValue(tag) ? 'success' : 'danger'}
+                key={tag}
+                size={size}
+              >
+                <TagLabel py={1} onClick={() => onUpdateTag(tag)}>
+                  {tag}
+                </TagLabel>
+                <TagCloseButton onClick={() => removeTag(tag)} />
+              </Tag>
+            )
+          })}
+        </Flex>
+      )}
+    </Fragment>
   )
 }
 

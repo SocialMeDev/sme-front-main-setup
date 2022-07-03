@@ -1,11 +1,13 @@
-import { memo } from 'react'
+import { forwardRef, memo } from 'react'
 
 import { Radio } from '@chakra-ui/react'
 
 import { useSizeValue } from 'hooks'
 
-function RadioDefault({ size = useSizeValue('sm', 'md', 'lg'), ...rest }) {
-  return <Radio size={size} {...rest} />
-}
+const RadioDefault = forwardRef(
+  ({ size = useSizeValue('sm', 'md', 'lg'), ...rest }, ref) => {
+    return <Radio ref={ref} size={size} {...rest} />
+  }
+)
 
 export default memo(RadioDefault)

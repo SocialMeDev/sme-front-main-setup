@@ -1,10 +1,13 @@
 import { memo, Fragment } from 'react'
 
 import { Box, Flex } from 'components'
+import { useSidebar } from 'contexts/Sidebar/Provider'
 import MenuGroupTitle from '../../components/MenuGroupTitle'
 import MenuItem from '../../components/MenuItem'
 
 function MenuGroup({ sidebarItems }) {
+  const { onClose } = useSidebar()
+
   return (
     <Flex direction="column" justify="space-between" h="calc(100vh - 70px)">
       <Box>
@@ -15,7 +18,12 @@ function MenuGroup({ sidebarItems }) {
                 <MenuGroupTitle name={name} icon={icon} />
 
                 {childrens?.map((item) => (
-                  <MenuItem key={item.label} groupHref={href} item={item} />
+                  <MenuItem
+                    key={item.label}
+                    groupHref={href}
+                    item={item}
+                    onClose={onClose}
+                  />
                 ))}
               </Box>
             )}

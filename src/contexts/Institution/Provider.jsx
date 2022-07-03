@@ -15,7 +15,7 @@ function InstitutionProvider({ children }) {
 
   const { query } = useRouter()
 
-  const { institutionSlug, userPosition } = query
+  const { institutionSlug } = query
 
   const formatUserPermissions = useCallback((permissions) => {
     return permissions.map(({ permission }) => {
@@ -26,6 +26,8 @@ function InstitutionProvider({ children }) {
   const getUserPermissionsInThisInstitutions = useCallback(
     async (institution) => {
       const response = await readLoggedUserPermission(institution)
+
+      console.log(`response`, response)
 
       let permissions = []
 
@@ -57,10 +59,7 @@ function InstitutionProvider({ children }) {
 
     async function loadAsyncFunction() {
       await loadInstitution(institutionSlug, isMounted)
-
-      if (userPosition) {
-        await getUserPermissionsInThisInstitutions(institutionSlug)
-      }
+      await getUserPermissionsInThisInstitutions(institutionSlug)
 
       if (isMounted) setFinishedInstitutionLogic(true)
     }

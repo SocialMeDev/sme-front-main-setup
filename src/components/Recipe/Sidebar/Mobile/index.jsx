@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react'
 import {
-  Flex,
+  DrawerBody,
   Box,
   Drawer,
   DrawerOverlay,
@@ -39,19 +39,13 @@ function MobileSidebar({ ...rest }) {
       <DrawerContent>
         <DrawerCloseButton />
 
-        <Box h="100vh" pb="10" w="full" transition="all 0.5s">
-          <Flex
-            bg="commonBg"
-            direction="column"
-            fontSize="sm"
-            aria-label="Main Navigation"
-            justify="space-between"
-          >
+        <DrawerBody p={0}>
+          <Box bg="bgContent" w="100%" transition="all 0.4s">
             {rest.plugins?.map((plugin, index) => (
               <RenderPlugin {...plugin} key={index} />
             ))}
-          </Flex>
-        </Box>
+          </Box>
+        </DrawerBody>
       </DrawerContent>
     </Drawer>
   )

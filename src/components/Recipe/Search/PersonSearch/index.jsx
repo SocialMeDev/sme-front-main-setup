@@ -1,5 +1,4 @@
-import { useDisclosure } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import {
   Box,
@@ -12,6 +11,7 @@ import {
   ModalOverlay,
   ModalCloseButton
 } from 'components'
+import { useDisclosure } from 'hooks'
 import Search from './views/Search'
 import Select from './views/Select'
 import MultipleSelect from './views/MultipleSelect'
@@ -128,7 +128,7 @@ export default function MultipleSelection({
       <Box onClick={onOpen}>{trigger}</Box>
 
       {overlayType === 'drawer' && (
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <Drawer isOpen={isOpen} onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -138,12 +138,7 @@ export default function MultipleSelection({
       )}
 
       {overlayType === 'modal' && (
-        <Modal
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          scrollBehavior={'outside'}
-        >
+        <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="outside">
           <ModalOverlay />
           <ModalContent>
             <ModalCloseButton />

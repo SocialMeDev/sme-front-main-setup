@@ -8,7 +8,7 @@ export default async function logout() {
 
   const response = await API(params)
 
-  if (!response?.header?.success) {
+  if (!response.header.success) {
     toast.error(response.header.title)
   }
 

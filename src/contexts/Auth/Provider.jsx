@@ -1,77 +1,37 @@
-import { useCallback, useContext, useEffect, useReducer } from 'react'
-import { useRouter } from 'next/router'
+import { useCallback, useState, useContext, useEffect } from 'react'
 
 import AuthContext from './Context'
-import AuthReducer from './Reducer'
-import { deleteStorage } from 'utils/helpers/sirStorage'
 import { getCookieName } from 'utils/helpers/sirVariables'
+import { setStorage } from 'utils/helpers/sirStorage'
 
 import setLogout from 'services/socialMeApis/modules/auth/calls/user/logout'
 import setLogoutAll from 'services/socialMeApis/modules/auth/calls/user/logoutAll'
-import setAuthenticatedUser from './Actions/setAuthenticatedUser'
-import setRemoveAuthUser from './Actions/setRemoveUserFromList'
-import setUser from './Actions/setUser'
-import setUserList from './Actions/setUserList'
+import connectUser from './Actions/authenticateUser'
+import removeUserFromUserList from './Actions/removeUserFromUserList'
+import destroyUserPositionCookie from './Actions/destroyUserPositionCookie'
+import getUserList from './Actions/getUserList'
 import verifyUserToken from './Actions/verifyUserToken'
-import updateUser from './Actions/updateUser'
 import { Box, Loader } from 'components'
 
 function AuthProvider({ children }) {
-  const { query } = useRouter()
-
-  const initialStates = {
-    user: {},
-    userList: [],
-    userPosition: false,
-    finishedUserListLogic: false,
-    finishedUserLogic: false
-  }
-
-  const [state, dispatch] = useReducer(AuthReducer, initialStates)
-
-  const {
-    user,
-    userPosition,
-    userList,
-    finishedUserListLogic,
-    finishedUserLogic
-  } = state
+  const [user, setUser] = useState({})
+  const [userList, setUserList] = useState([])
+  const [isUserLogged, setIsUserLogged] = useState(false)
+  const [finishedUserListLogic, setFinishedUserListLogic] = useState(false)
+  const [finishedUserLogic, setFinishedUserLogic] = useState(false)
 
   const checkUserToken = useCallback(async (selecetdUserPosition) => {
-    dispatch({
-      type: 'Loading'
-    })
+    setFinishedUserLogic(false)
 
     const response = await verifyUserToken(selecetdUserPosition)
 
     if (response.header.success) {
-      dispatch({
-        type: 'SetUser',
-        payload: {
-          user: response.body.person,
-          userPosition: response.position
-        }
-      })
+      setUser(response.body.person)
+      setIsUserLogged(true)
     }
 
-    dispatch({
-      type: 'StopLoading'
-    })
+    setFinishedUserLogic(true)
   }, [])
-
-  useEffect(() => {
-    async function loadAsyncFunction() {
-      await checkUserToken(query.userPosition)
-    }
-
-    if (query.userPosition) {
-      loadAsyncFunction()
-    } else {
-      dispatch({
-        type: 'StopLoading'
-      })
-    }
-  }, [query.userPosition])
 
   useEffect(() => {
     async function loadAsyncFunction() {
@@ -83,93 +43,105 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     async function loadAsyncFunction() {
-      await setUserList(dispatch)
+      const userList = await getUserList()
 
-      dispatch({
-        type: 'StopLoadingUserList'
-      })
+      setUserList(userList)
+
+      setFinishedUserListLogic(true)
     }
 
     loadAsyncFunction()
   }, [])
 
-  const desconnectUserInList = useCallback(async (userId) => {
-    dispatch({
-      type: 'DesconnectUserInList',
-      userId
-    })
-  }, [])
+  const desconnectUserInList = useCallback(
+    async (userId) => {
+      setUserList(
+        userList.map((user) => {
+          if (user.id !== userId) return user
+          return { ...user, token_status: 'INACTIVE' }
+        })
+      )
+    },
+    [userList]
+  )
 
   const setTemporaryUser = useCallback(async (user) => {
-    dispatch({
-      type: 'SetUser',
-      payload: {
-        user,
-        userPosition: false
-      }
-    })
+    setUser(user)
   }, [])
 
   const setNewUser = useCallback(async (user, userIndex) => {
-    await setUser(userIndex)
+    const userPositionCookie = getCookieName('userPosition')
 
-    dispatch({
-      type: 'SetUser',
-      payload: {
-        user,
-        userPosition: userIndex
-      }
-    })
+    await setStorage(userPositionCookie, userIndex)
+
+    setUser(user)
+    setIsUserLogged(true)
   }, [])
 
   const logoutAll = useCallback(async () => {
     const response = await setLogoutAll()
 
     if (response.header.success) {
-      const userPositionCookie = getCookieName('userPosition')
-
-      dispatch({
-        type: 'DisconnectAllUsers'
+      const newUserList = userList.map((item) => {
+        return { ...item, token_status: 'INACTIVE' }
       })
 
-      await deleteStorage(userPositionCookie)
+      setUser({})
+      setIsUserLogged(false)
+      setUserList(newUserList)
+
+      destroyUserPositionCookie()
     }
-  }, [])
+  }, [userList])
 
   const logout = useCallback(async () => {
     const response = await setLogout()
 
     if (response.header.success) {
-      dispatch({
-        type: 'DisconnectUser',
-        payload: userPosition
+      const newUserList = userList.map((item) => {
+        if (item.id !== user.id) return item
+        return { ...item, token_status: 'INACTIVE' }
       })
 
-      await updateUser()
+      setUser({})
+      setUserList(newUserList)
+      setIsUserLogged(false)
+      destroyUserPositionCookie()
     }
-  }, [userPosition])
+  }, [user, userList])
 
   const removeUserInList = useCallback(
     async (removedUser) => {
-      const newUserList = await setRemoveAuthUser(removedUser, userList)
+      const newUserList = await removeUserFromUserList(removedUser, userList)
 
-      dispatch({
-        type: 'RemoveUserInList',
-        payload: newUserList
-      })
+      if (removedUser.id === user.id) {
+        setUser({})
+        setIsUserLogged(false)
+
+        await destroyUserPositionCookie()
+      }
+
+      setUserList(newUserList)
     },
-    [userList]
+    [user, userList]
   )
 
   const authenticateUser = useCallback(
     async (newUser) => {
-      const newuserIndex = await setAuthenticatedUser(
-        dispatch,
-        newUser,
-        userList
-      )
+      const { user, alreadyExist } = await connectUser(newUser, userList)
 
-      return newuserIndex
+      setIsUserLogged(true)
+
+      let newUserList = [...userList, user]
+
+      if (alreadyExist) {
+        newUserList = userList.map((item) => {
+          if (item.id !== user.id) return item
+          return { ...user, token_status: 'ACTIVE' }
+        })
+      }
+
+      setUserList(newUserList)
     },
     [userList]
   )
@@ -177,8 +149,8 @@ function AuthProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{
+        isUserLogged,
         user,
-        userPosition,
         userList,
         finishedUserLogic,
         logout,

@@ -6,9 +6,7 @@ export default {
   component: InputTag,
   title: 'Forms/InputTag/Default',
   args: {
-    id: 'name',
-    label: 'Notificações',
-    variant: 'outline',
+    variant: 'solid',
     defaultValues: ['Agora', 'TagLabel'],
     onChange: (tags) => {
       console.log(`Tags`, tags)
@@ -18,11 +16,11 @@ export default {
     }
   },
   argTypes: {
-    pattern: {
-      name: 'pattern',
+    validate: {
+      name: 'validate',
       table: {
         type: {
-          summary: 'Regexp'
+          summary: '(tagValue) => boolean'
         }
       }
     },
@@ -35,7 +33,7 @@ export default {
       }
     },
     variant: {
-      options: ['outline', 'filled', 'flushed'],
+      options: ['outline', 'solid', 'ghost'],
       control: { type: 'radio' },
       name: 'variant',
       table: {
@@ -59,22 +57,6 @@ export default {
       table: {
         type: {
           summary: 'string[]'
-        }
-      }
-    },
-    label: {
-      name: 'label',
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    },
-    id: {
-      name: 'id',
-      table: {
-        type: {
-          summary: 'string'
         }
       }
     }

@@ -11,11 +11,7 @@ export default async function readActivityType({ institutionSlug, filters }) {
     data: filters
   }
 
-  console.log(`Read params`, params)
-
   const response = await API(params)
-
-  console.log(`Read response`, response)
 
   if (!response.header.success) {
     toast.error(response.header.title)

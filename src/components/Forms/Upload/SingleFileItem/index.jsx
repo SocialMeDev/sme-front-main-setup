@@ -15,7 +15,7 @@ import { getFormatedBytes } from 'utils/transforms/number'
 import { useFileManager } from 'components/Forms/Upload/FileManager/contexts/Provider'
 import { DeleteDisabled2 } from 'components/Icons/Interface'
 
-function SingleFileItem({
+function DropzoneFeedback({
   makeAnotherUpload,
   cancelUpload,
   resultTitle = 'Arquivo enviado com sucesso',
@@ -53,7 +53,7 @@ function SingleFileItem({
           ) : (
             <Stack align="center" justify="center">
               <CircularProgress
-                size="8rem"
+                size="6rem"
                 value={uploadProgress}
                 color="primary"
               >
@@ -75,9 +75,7 @@ function SingleFileItem({
                 <Button
                   variant="solid"
                   leftIcon={<DeleteDisabled2 />}
-                  onClick={() => {
-                    cancelUpload()
-                  }}
+                  onClick={() => cancelUpload()}
                 >
                   Cancelar
                 </Button>
@@ -90,4 +88,4 @@ function SingleFileItem({
   )
 }
 
-export default memo(SingleFileItem)
+export default memo(DropzoneFeedback)

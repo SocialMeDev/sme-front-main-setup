@@ -59,10 +59,10 @@ const Group = {
       timeout: '50000'
     }
   },
-  Person: {
+  User: {
     Read: {
       baseURL: getApiUrl('sme-citizen'),
-      url: '/me-citizen/institution/institutionSlug/permission-group/groupSlug/person/eligible',
+      url: '/me-citizen/institution/institutionSlug/permission-group/groupSlug/person',
       method: 'post',
       timeout: '50000'
     },

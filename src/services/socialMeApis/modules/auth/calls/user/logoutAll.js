@@ -6,7 +6,7 @@ import {
   getAppInformation
 } from 'utils/helpers/sirVariables'
 import toast from 'utils/toast'
-import getUsersToken from 'contexts/Auth/Actions/getUsersToken'
+import getUsersTokens from 'contexts/Auth/Actions/getUsersTokens'
 
 export default async function logoutAll() {
   const userPositionCookie = await getCookieName('userPosition')
@@ -15,7 +15,7 @@ export default async function logoutAll() {
   const appKey = await getApiHeaders('appKey')
   const appKeyValue = await getAppInformation('key')
 
-  const usersToken = await getUsersToken()
+  const usersToken = await getUsersTokens()
 
   const params = {
     operation: ['User', 'Logout'],

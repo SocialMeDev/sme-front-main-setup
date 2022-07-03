@@ -21,7 +21,7 @@ function PaginationDescription({
     <Fragment>
       {totalItems > 0 && (
         <Text>
-          Mostrano de {showingTo} - {showingFrom} de {format(totalItems)}{' '}
+          Mostrando de {showingTo} a {showingFrom} de {format(totalItems)}{' '}
           {label}
         </Text>
       )}

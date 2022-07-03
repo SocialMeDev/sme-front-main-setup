@@ -11,7 +11,7 @@ function MenuItem({ isOpen, groupHref, item }) {
 
   if (groupHref) {
     if (
-      asPath === `${groupHref}${item.href}` ||
+      asPath === `${groupHref}${item.href}/` ||
       asPath.startsWith(`${groupHref}${item.href}`)
     ) {
       isActive = true
@@ -33,7 +33,7 @@ function MenuItem({ isOpen, groupHref, item }) {
     >
       <Box p={!isOpen && 1}>
         <Flex
-          onClick={() => push(`${groupHref}${item.href}`)}
+          onClick={() => push(`${groupHref ? groupHref : ''}${item.href}`)}
           w="100%"
           as="button"
           align="center"

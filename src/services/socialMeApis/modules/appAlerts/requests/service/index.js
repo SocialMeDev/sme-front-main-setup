@@ -63,6 +63,12 @@ const Service = {
       url: '/alerts/institution/institutionSlug/service-letter/serviceLetterSlug/service-subject/serviceSubjectSlug/service/serviceSlug/place/placeId',
       method: 'post',
       timeout: '50000'
+    },
+    ListServices: {
+      baseURL: getApiUrl('sme-app-alerts'),
+      url: '/alerts/institution/institutionSlug/place/placeId/services',
+      method: 'post',
+      timeout: '500000'
     }
   },
   Read: {
