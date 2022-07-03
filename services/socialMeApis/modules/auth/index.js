@@ -6,6 +6,8 @@ import treatResponseError from 'services/socialMeApis/function/treatResponseErro
 async function authAPI(paramsReceived) {
   const treatedParams = await prepareParameters(paramsReceived)
 
+  console.log(`treatedParams`, treatedParams)
+
   const response = await axios(treatedParams)
     .then(async (res) => {
       const response = res.data

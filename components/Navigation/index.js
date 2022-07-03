@@ -1,6 +1,6 @@
 import { Link, LinkBox, LinkOverlay, NextLink } from './Link'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from './Breadcrumb'
-import { Pagination } from './Pagination'
+import { Pagination, MiniPagination } from './Pagination'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from './Tabs'
 export {
   Link,
@@ -15,5 +15,6 @@ export {
   TabList,
   TabPanel,
   TabPanels,
-  Tabs
+  Tabs,
+  MiniPagination
 }

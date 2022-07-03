@@ -17,7 +17,6 @@ function BadgeDefault({
       size={size}
       variant={variant}
       fontWeight="500"
-      bg={colorScheme === 'green' && 'green.600'}
       colorScheme={colorScheme}
       letterSpacing={1}
       oapcity={1}

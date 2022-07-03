@@ -6,7 +6,7 @@ function PageHead({
   twitterSite,
   twitterCreator,
   siteName,
-  siteType,
+  siteType = 'website',
   description,
   author,
   title,

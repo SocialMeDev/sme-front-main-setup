@@ -1,5 +1,5 @@
 import { CreateButton } from 'components'
-import searchOnSocialMe from 'services/socialMeApis/modules/citizen/calls/person/searchOnSocialMe'
+import searchOnSocialMe from 'services/socialMeApis/modules/citizen/calls/user/searchOnSocialMe'
 
 import UserDrawer from './components/UserDrawer'
 import PersonSearch from '.'

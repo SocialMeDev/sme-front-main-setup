@@ -1,10 +1,6 @@
 import { memo, useRef, useState, useCallback, useEffect } from 'react'
 
 import {
-  FormControl,
-  FormLabel,
-  Flex,
-  InfoModal,
   IconButton,
   Stack,
   Input,
@@ -17,8 +13,6 @@ import { useHotKeyPressed } from 'hooks'
 import TagsList from './components/TagsList'
 
 function InputTag({
-  id = 'input-tags',
-  label,
   validate,
   onChange,
   defaultValues = [],
@@ -32,7 +26,6 @@ function InputTag({
 
   useHotKeyPressed('Comma', () => {
     const isInputFocused = inputRef.current === document.activeElement
-
     if (isInputFocused) addTag(inputRef.current.value)
   })
 
@@ -46,9 +39,7 @@ function InputTag({
 
   const removeTag = useCallback(
     (removedTag) => {
-      const newTags = tags.filter((tag) => tag !== removedTag)
-
-      setTags(newTags)
+      setTags(tags.filter((tag) => tag !== removedTag))
     },
     [tags]
   )
@@ -61,40 +52,33 @@ function InputTag({
     onChange(tags)
   }, [tags])
 
+  useEffect(() => {
+    setTags(defaultValues)
+  }, [onChange])
+
   return (
     <Stack>
-      <FormControl mb={0}>
-        <Flex align="center" gap={2} p={1}>
-          <FormLabel htmlFor={id} m={0}>
-            {label}
-          </FormLabel>
-          <InfoModal
-            title="Atalho"
-            info="Digite ',' após escrever o que deseja inserir na lista."
+      <InputGroup size={size}>
+        <Input ref={inputRef} {...rest} />
+
+        <InputRightElement>
+          <IconButton
+            aria-label="Adicionar um novo item nesta lista"
+            roundedTopLeft="none"
+            roundedBottomLeft="none"
+            size={size}
+            variant="solid"
+            onClick={() => addTag(inputRef.current.value)}
+            icon={<Plus boxSize={8} />}
           />
-        </Flex>
-
-        <InputGroup size={size}>
-          <Input id={id} variant={variant} ref={inputRef} {...rest} />
-
-          <InputRightElement>
-            <IconButton
-              aria-label="Adicionar um novo item nesta lista"
-              roundedTopLeft="none"
-              roundedBottomLeft="none"
-              size={size}
-              variant="solid"
-              onClick={() => addTag(inputRef.current.value)}
-              icon={<Plus boxSize={8} />}
-            />
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
+        </InputRightElement>
+      </InputGroup>
 
       <TagsList
         updateTag={updateTag}
         tags={tags}
         size={size}
+        variant={variant}
         removeTag={removeTag}
         validate={validate}
       />

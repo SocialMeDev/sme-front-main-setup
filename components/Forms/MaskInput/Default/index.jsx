@@ -5,6 +5,7 @@ const MaskInput = forwardRef(
   ({ onChange, onBlur, name, mask, ...rest }, ref) => {
     return (
       <Input
+        {...rest}
         ref={ref}
         name={name}
         onBlur={onBlur}
@@ -12,7 +13,6 @@ const MaskInput = forwardRef(
           event.target.value = mask(event.target.value)
           onChange(event)
         }}
-        {...rest}
       />
     )
   }

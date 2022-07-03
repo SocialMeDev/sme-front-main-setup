@@ -1,5 +1,4 @@
 import { forwardRef, memo } from 'react'
-
 import { Image } from '@chakra-ui/react'
 
 const ImageDefault = forwardRef(({ ...rest }, ref) => {

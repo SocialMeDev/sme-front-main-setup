@@ -1,9 +1,9 @@
 import API from 'services/socialMeApis/modules/citizen'
 import toast from 'utils/toast'
 
-export default async function readGroupPersons({ institutionSlug, groupSlug }) {
+export default async function readGroupUsers({ institutionSlug, groupSlug }) {
   const params = {
-    operation: ['Group', 'Person', 'Read'],
+    operation: ['Group', 'User', 'Read'],
     urlParams: {
       institutionSlug,
       groupSlug

@@ -52,28 +52,6 @@ const reducer = (state, action) => {
             : user
         })
       }
-    case 'RemoveUserInList': {
-      const newUserList = action.payload
-
-      let newUserPosition = false
-
-      newUserList.every((user, index) => {
-        if (user.token_status === 'ACTIVE') {
-          newUserPosition = index
-
-          return false
-        }
-
-        return true
-      })
-
-      return {
-        ...state,
-        user: newUserList[newUserPosition],
-        userList: newUserList,
-        userPosition: newUserPosition
-      }
-    }
 
     case 'DisconnectUser': {
       const userPosition = action.payload

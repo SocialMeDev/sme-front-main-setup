@@ -64,6 +64,8 @@ import Question from './Question'
 import RefreshRotate3 from './RefreshRotate3'
 import RotateRefreshLoading2 from './RotateRefreshLoading2'
 import Search1 from './Search1'
+import SearchZoomPlus from './SearchZoomPlus'
+import SearchMinus from './SearchMinus'
 import SettingEditFilterGear from './SettingEditFilterGear'
 import SettingsFilterMenu1 from './SettingsFilterMenu1'
 import StarFavorite from './StarFavorite'
@@ -147,6 +149,8 @@ export {
   RefreshRotate3,
   RotateRefreshLoading2,
   Search1,
+  SearchZoomPlus,
+  SearchMinus,
   SettingEditFilterGear,
   SettingsFilterMenu1,
   StarFavorite,
@@ -231,6 +235,8 @@ export default {
   RefreshRotate3,
   RotateRefreshLoading2,
   Search1,
+  SearchZoomPlus,
+  SearchMinus,
   SettingEditFilterGear,
   SettingsFilterMenu1,
   StarFavorite,

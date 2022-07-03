@@ -4,7 +4,7 @@ import { Flex, Text, Icon } from 'components'
 import { GridLayout17 } from 'components/Icons/Interface'
 import { useSizeValue } from 'hooks'
 
-function MenuGroupTitle({ name, icon }) {
+function MenuGroup({ name, icon }) {
   return (
     <Flex align="center" justify="center" h="30px">
       <Icon
@@ -25,4 +25,4 @@ function MenuGroupTitle({ name, icon }) {
   )
 }
 
-export default memo(MenuGroupTitle)
+export default memo(MenuGroup)

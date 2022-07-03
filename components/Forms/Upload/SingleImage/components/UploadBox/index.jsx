@@ -1,10 +1,10 @@
-import { memo, Fragment } from 'react'
+import { memo } from 'react'
 
-import { Stack, Text, Image, Loader } from 'components'
+import { Stack, Text, Loader } from 'components'
 
 import { CloudUpload2 } from 'components/Icons/Interface'
 
-function UploadBox({ size, isUploading, imageURL, inputRef, label }) {
+function UploadBox({ size, isUploading, inputRef, label, rounded }) {
   return (
     <Stack
       as="button"
@@ -12,26 +12,21 @@ function UploadBox({ size, isUploading, imageURL, inputRef, label }) {
       w={size}
       h={size}
       onClick={() => inputRef.current.click()}
-      border={imageURL ? '1px solid' : '1px dashed'}
+      border="1px dashed"
       borderColor="borderColor"
-      p={1}
+      bg="borderColor"
       align="center"
       justify="center"
-      _hover={{ borderColor: 'primary' }}
+      rounded={rounded}
+      _hover={{ bg: 'primary', borderColor: 'primary' }}
     >
-      {!imageURL ? (
+      {isUploading ? (
+        <Loader text="Carregando..." height="100px" />
+      ) : (
         <Stack align="center" spacing={0}>
           <CloudUpload2 />
           <Text>{label}</Text>
         </Stack>
-      ) : (
-        <Fragment>
-          {isUploading ? (
-            <Loader text="Carregando..." height="100px" />
-          ) : (
-            <Image src={imageURL} alt="Imagem dinâmica" />
-          )}
-        </Fragment>
       )}
     </Stack>
   )

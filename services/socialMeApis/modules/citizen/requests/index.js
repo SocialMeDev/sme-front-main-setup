@@ -1,28 +1,27 @@
-import Address from './address'
+import Place from './places'
 import Bond from './bond'
 import BondOptions from './bondOptions'
 import DocumentDraft from './documentDraft'
 import Group from './group'
-import OrganizationUnit from './organizationUnit'
-import Person from './person'
+import OrganizationalUnit from './organizationalUnit'
+import Service from './service'
 import ServiceLetter from './serviceLetter'
 import ServicePublic from './servicePublic'
 import ServiceSubject from './serviceSubject'
-
-import Service from './service'
+import User from './user'
 
 const Request = {
-  Address,
+  Place,
   Bond,
   BondOptions,
   DocumentDraft,
   Group,
-  OrganizationUnit,
-  Person,
+  OrganizationalUnit,
+  Service,
   ServiceLetter,
   ServicePublic,
   ServiceSubject,
-  Service
+  User
 }
 
 export default Request

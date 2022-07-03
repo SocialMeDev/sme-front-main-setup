@@ -46,6 +46,12 @@ const Person = {
     timeout: '50000'
   },
   Unique: {
+    Create: {
+      baseURL: getApiUrl('sme-app-alerts'),
+      url: '/alerts/institution/institutionSlug/person/',
+      method: 'post',
+      timeout: '50000'
+    },
     Origin: {
       Read: {
         baseURL: getApiUrl('sme-app-alerts'),
@@ -65,6 +71,16 @@ const Person = {
       url: '/alerts/institution/institutionSlug/person/uniquePersonId',
       method: 'get',
       timeout: '50000'
+    }
+  },
+  Place: {
+    Read: {
+      PersonPlaces: {
+        baseURL: getApiUrl('sme-app-alerts'),
+        url: '/alerts/institution/institutionSlug/person/personId/places',
+        method: 'post',
+        timeout: '50000'
+      }
     }
   }
 }

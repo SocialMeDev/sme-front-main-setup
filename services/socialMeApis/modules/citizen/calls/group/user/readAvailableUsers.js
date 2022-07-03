@@ -1,13 +1,13 @@
 import API from 'services/socialMeApis/modules/citizen'
 import toast from 'utils/toast'
 
-export default async function readEligiblePersonsToBindGroup({
+export default async function readEligibleUserToBindGroup({
   institutionSlug,
   groupSlug,
   filters
 }) {
   const params = {
-    operation: ['Group', 'Person', 'Available'],
+    operation: ['Group', 'User', 'Available'],
     urlParams: {
       institutionSlug,
       groupSlug

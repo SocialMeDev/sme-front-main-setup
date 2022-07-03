@@ -14,16 +14,18 @@ import {
   ModalHeader
 } from 'components'
 import { useDisclosure } from 'hooks'
-import { Briefcase } from 'components/Icons/Interface'
+import { CameraPhoto } from 'components/Icons/PhotoEdit'
+import AddImage from './components/AddImage'
 import ImageList from './components/ImageList'
 
 function GalleryButton({
+  rounded,
   size,
   title,
   images,
   setImages,
-  onUpdate,
   onUpload,
+  onUpdate,
   onDelete
 }) {
   const [isUpdating, setIsLoading] = useState(false)
@@ -51,7 +53,7 @@ function GalleryButton({
       <Box position="absolute" bottom={-3} right={-3}>
         <IconButton
           aria-label="Abrir galeria de imagens"
-          icon={<Briefcase />}
+          icon={<CameraPhoto />}
           rounded="full"
           variant="solid"
           onClick={onOpen}
@@ -59,7 +61,11 @@ function GalleryButton({
       </Box>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
-        <ModalContent>
+        <ModalContent
+          minWidth={{ base: '95%', sm: '450px', md: '550px', lg: '650px' }}
+          minHeight={{ base: '95%', md: '300px', lg: '400px' }}
+          mt={10}
+        >
           <ModalCloseButton />
 
           <ModalHeader>
@@ -67,13 +73,17 @@ function GalleryButton({
           </ModalHeader>
 
           <ModalBody>
-            <ImageList
+            <AddImage
               size={size}
+              rounded={rounded}
+              closeGallery={onClose}
+              onUpload={onUpload}
+            />
+            <ImageList
               images={images}
               setImages={setImages}
               selectedImageToUpdate={selectedImageToUpdate}
               setSelectedImageToUpdate={setSelectedImageToUpdate}
-              onUpload={onUpload}
               onDelete={onDelete}
             />
           </ModalBody>
@@ -83,7 +93,7 @@ function GalleryButton({
             <Tooltip
               isDisabled={Object.entries(selectedImageToUpdate).length !== 0}
               placement="bottom"
-              label="Seleciona uma imagem para trocar a foto"
+              label="Seleciona uma imagem"
             >
               <Button
                 isLoading={isUpdating}
@@ -91,7 +101,7 @@ function GalleryButton({
                 variant="solid"
                 onClick={updateImage}
               >
-                Atualizar
+                Atualizar foto
               </Button>
             </Tooltip>
           </ModalFooter>

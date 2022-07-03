@@ -47,7 +47,7 @@ const AutoComplete = ({
     if (inputRef.current) inputRef.current.value = value
   }, [value])
 
-  const onSelect = useCallback((value) => {}, [])
+  const onSelect = useCallback(() => {}, [])
 
   return (
     <Box position="relative" ref={containerRef} {...rest}>

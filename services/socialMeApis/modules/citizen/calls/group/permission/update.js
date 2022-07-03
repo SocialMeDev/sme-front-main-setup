@@ -1,7 +1,7 @@
 import API from 'services/socialMeApis/modules/citizen'
 import toast from 'utils/toast'
 
-export default async function listGroupPermissions({
+export default async function updatetGroupPermissions({
   institutionSlug,
   groupSlug,
   permission
@@ -17,11 +17,7 @@ export default async function listGroupPermissions({
     }
   }
 
-  console.log(`Group Permission Update params`, params)
-
   const response = await API(params)
-
-  console.log(`Group Permission Update response`, response)
 
   if (response?.header?.success) {
     toast.success(response?.header?.title)

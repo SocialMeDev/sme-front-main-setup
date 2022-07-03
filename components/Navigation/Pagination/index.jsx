@@ -1,3 +1,4 @@
 import Pagination from './Default'
+import MiniPagination from './Mini'
 
-export { Pagination }
+export { Pagination, MiniPagination }

@@ -24,7 +24,7 @@ function AuthenticatedUsersModal({ query }) {
   const { user } = useAuth()
   const { push } = useRouter()
 
-  if (!user.id) {
+  if (!user) {
     return <Fragment />
   }
 

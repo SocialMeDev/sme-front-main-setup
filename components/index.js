@@ -78,14 +78,14 @@ const {
 } = Feedback
 const { Head } = SEO
 const {
-  IsAuthenticated,
+  IsConnected,
   HiddenPermission,
   RedirectPermission,
   UserHasAtLeastOnePermission,
   HasUser
 } = Validation
 const { Avatar, AvatarGroup, Icon, Image, Lottie } = Media
-const { ScaleFade } = Transitions
+const { ScaleFade, Collapse } = Transitions
 const {
   Link,
   LinkBox,
@@ -94,6 +94,7 @@ const {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  MiniPagination,
   Pagination,
   Tab,
   TabList,
@@ -190,12 +191,14 @@ const {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  NumberInput,
   Input,
   InputGroup,
   InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
   InputRightElement,
+  MaskedInput,
   MaskInput,
   PasswordInput,
   Radio,
@@ -283,7 +286,7 @@ export {
   Image,
   Lottie,
   // Validation
-  IsAuthenticated,
+  IsConnected,
   HiddenPermission,
   RedirectPermission,
   UserHasAtLeastOnePermission,
@@ -323,6 +326,7 @@ export {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  MiniPagination,
   Pagination,
   Tab,
   TabList,
@@ -345,12 +349,14 @@ export {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  NumberInput,
   Input,
   InputGroup,
   InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
   InputRightElement,
+  MaskedInput,
   MaskInput,
   PasswordInput,
   Radio,
@@ -404,6 +410,7 @@ export {
   Tooltip,
   // Transitions
   ScaleFade,
+  Collapse,
   // SEO
   Head
 }

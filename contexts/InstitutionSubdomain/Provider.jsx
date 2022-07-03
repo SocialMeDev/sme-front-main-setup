@@ -11,6 +11,7 @@ export default function InstitutionSubdomain({ children }) {
 
   const [isLoading, setIsLoading] = useState(true)
   const [institution, setInstitution] = useState({})
+  const [institutionSlug, setInstitutionSlug] = useState('demo')
 
   useEffect(() => {
     async function loadAsyncFunction() {
@@ -24,6 +25,8 @@ export default function InstitutionSubdomain({ children }) {
 
       if (domain !== 'localhost' && domain !== '10.10.2.248') {
         subdomain = domain.replace('https://', '').split('.')[0]
+
+        setInstitutionSlug(subdomain)
       }
 
       const response = await showInstitution(subdomain)
@@ -41,7 +44,9 @@ export default function InstitutionSubdomain({ children }) {
   }, [])
 
   return (
-    <InstitutionSubdomainContext.Provider value={{ institution }}>
+    <InstitutionSubdomainContext.Provider
+      value={{ institution, institutionSlug }}
+    >
       {isLoading ? <Loader height="100vh" text="Carregando" /> : children}
     </InstitutionSubdomainContext.Provider>
   )

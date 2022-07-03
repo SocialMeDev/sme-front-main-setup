@@ -18,9 +18,9 @@ import { DeleteDisabled } from 'components/Icons/Interface'
 import { GroupUser1 } from 'components/Icons/Users'
 function LoggedUserMenu({ query }) {
   const { push } = useRouter()
-  const { user, logout } = useAuth()
+  const { isUserLogged, user, logout } = useAuth()
 
-  if (!user.id) {
+  if (!isUserLogged) {
     return <Fragment />
   }
 
@@ -48,6 +48,7 @@ function LoggedUserMenu({ query }) {
           name={user.name}
         />
       </MenuButton>
+
       <MenuList color="dark">
         <NextLink href={pathToManagerAccounts}>
           <MenuItem icon={<GroupUser1 />}>Gerenciar contas</MenuItem>

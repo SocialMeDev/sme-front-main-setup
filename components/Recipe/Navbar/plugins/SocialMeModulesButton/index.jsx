@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react'
+
 import {
   NextLink,
   Heading,
@@ -18,6 +19,9 @@ import { useDisclosure } from 'hooks'
 import { getAppUrl } from 'utils/helpers/sirVariables'
 import { GridLayout10 } from 'components/Icons/Interface'
 
+import Profile from './brands/profile.png'
+import CitizenMe from './brands/citizenMe.png'
+
 function SocialMeModulesButton() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -25,12 +29,12 @@ function SocialMeModulesButton() {
     return [
       {
         href: getAppUrl('profile'),
-        imageURL: '/images/brands/profile.png',
+        imageURL: Profile,
         name: 'Perfil'
       },
       {
         href: getAppUrl('citizen'),
-        imageURL: '/images/brands/profile.png',
+        imageURL: CitizenMe,
         name: 'Me cidadão'
       }
     ]
@@ -68,7 +72,11 @@ function SocialMeModulesButton() {
                       color: 'light'
                     }}
                   >
-                    <Image src={item.imageURL} alt={item.name} boxSize="32px" />
+                    <Image
+                      src={item.imageURL.src}
+                      alt={item.name}
+                      boxSize="32px"
+                    />
                     <Text>{item.name}</Text>
                   </Flex>
                 </NextLink>

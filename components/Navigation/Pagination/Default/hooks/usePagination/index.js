@@ -10,7 +10,7 @@ const usePagination = ({ totalItems, limit, currentPage }) => {
   const isMobile = window.innerWidth < 600
 
   useEffect(() => {
-    function ChooseBegginerPageItems(maxPages = 0) {
+    function chooseBegginerPageItems(maxPages = 0) {
       const pagesQuantity = maxPages < 7 ? maxPages : 7
 
       let pages = setBegginerPageItems(pagesQuantity, maxPages)
@@ -20,7 +20,7 @@ const usePagination = ({ totalItems, limit, currentPage }) => {
       return pages
     }
 
-    function ChooseMiddlePageItems(maxPages) {
+    function chooseMiddlePageItems(maxPages) {
       let pages = []
 
       pages = setMiddlePageItems(pages, currentPage, maxPages)
@@ -33,7 +33,7 @@ const usePagination = ({ totalItems, limit, currentPage }) => {
       return pages
     }
 
-    function ChooseLastPageItems(maxPages) {
+    function chooseLastPageItems(maxPages) {
       let pages = []
 
       pages = setLastPageItems(pages, maxPages)
@@ -51,11 +51,11 @@ const usePagination = ({ totalItems, limit, currentPage }) => {
       let currentPages = []
 
       if (maxPages <= 4 || currentPage < 4) {
-        currentPages = ChooseBegginerPageItems(maxPages)
+        currentPages = chooseBegginerPageItems(maxPages)
       } else if (currentPage < maxPages - middlePageNeighbor) {
-        currentPages = ChooseMiddlePageItems(maxPages)
+        currentPages = chooseMiddlePageItems(maxPages)
       } else {
-        currentPages = ChooseLastPageItems(maxPages)
+        currentPages = chooseLastPageItems(maxPages)
       }
 
       setPages(currentPages)

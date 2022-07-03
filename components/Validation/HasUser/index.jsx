@@ -9,8 +9,6 @@ function HasUser({ children, redirect, setLoading }) {
   const { user } = useAuth()
 
   useEffect(() => {
-    setLoading(true)
-
     async function loadAsync() {
       const userExist = Object.entries(user).length > 0
 

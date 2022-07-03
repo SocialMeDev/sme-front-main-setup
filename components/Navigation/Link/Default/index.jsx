@@ -1,16 +1,28 @@
 import { memo } from 'react'
 import { Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
-function LinkDefault({ children, href, ...rest }) {
+import { useSizeValue } from 'hooks'
+
+function CustomLink({
+  fontSize = useSizeValue('xs', 'sm', 'md'),
+  download = false,
+  href,
+  children,
+  ...rest
+}) {
   return (
-    <Link
-      href={href}
-      _hover={{ color: 'primary', textDecoration: 'none' }}
-      {...rest}
-    >
-      {children}
-    </Link>
+    <NextLink href={href} passHref>
+      <Link
+        fontSize={fontSize}
+        _hover={{ color: 'primary', textDecoration: 'underline' }}
+        download={download}
+        {...rest}
+      >
+        {children}
+      </Link>
+    </NextLink>
   )
 }
 
-export default memo(LinkDefault)
+export default memo(CustomLink)

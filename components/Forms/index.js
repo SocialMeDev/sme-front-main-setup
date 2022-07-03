@@ -23,6 +23,8 @@ import {
   InputRightAddon,
   InputLeftElement
 } from './Input'
+import { MaskedInput } from './MaskedInput'
+import { NumberInput } from './NumberInput'
 import { MaskInput } from './MaskInput'
 import { PasswordInput } from './PasswordInput'
 import { Radio, RadioGroup } from './Radio'
@@ -48,12 +50,14 @@ export {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  NumberInput,
   Input,
   InputGroup,
   InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
   InputRightElement,
+  MaskedInput,
   MaskInput,
   PasswordInput,
   Radio,

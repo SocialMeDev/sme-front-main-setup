@@ -1,7 +1,15 @@
+import { format } from 'date-fns'
+
 export default function americanDateParser(stringDateFormat = '') {
-  const [day, month, year] = stringDateFormat.split('/')
+  if (typeof stringDateFormat === 'number') {
+    return format(stringDateFormat, 'yyyy-MM-dd')
+  }
 
-  const newDate = `${year}-${month}-${day}`
+  if (stringDateFormat.includes('/')) {
+    const [day, month, year] = stringDateFormat.split('/')
+    const newDate = `${year}-${month}-${day}`
+    return newDate
+  }
 
-  return newDate
+  return stringDateFormat
 }
