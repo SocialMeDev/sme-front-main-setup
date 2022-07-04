@@ -2,12 +2,13 @@ import { Fragment, memo, useCallback } from 'react'
 
 import { Box } from 'components'
 import { useSidebar } from 'contexts/Sidebar/Provider'
-import GoBackLogo from './plugins/GoBackLogo'
-import Logo from './plugins/Logo'
-import MenuGroup from './plugins/MenuGroup'
+
+import LogoWithLink from './components/LogoWithLink'
+import Logo from './components/Logo'
+import MenuGroup from './components/MenuGroup'
 
 const plugins = {
-  GoBackLogo,
+  LogoWithLink,
   Logo,
   MenuGroup
 }
@@ -15,15 +16,18 @@ const plugins = {
 function SideBarDesktop({ ...rest }) {
   const { isOpen } = useSidebar()
 
-  const RenderPlugin = useCallback(({ name, visible = true, props }) => {
-    if (visible) {
-      const Plugin = plugins[name]
+  const RenderPlugin = useCallback(
+    ({ name, visible = true, props }) => {
+      if (visible) {
+        const Plugin = plugins[name]
 
-      return <Plugin {...props} />
-    }
+        return <Plugin isOpen={isOpen} {...props} />
+      }
 
-    return <Fragment />
-  }, [])
+      return <Fragment />
+    },
+    [isOpen]
+  )
 
   return (
     <Box

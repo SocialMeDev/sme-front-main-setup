@@ -7,7 +7,7 @@ export default {
     src: 'https://randomuser.me/api/portraits/men/32.jpg',
     alt: 'Uma Avatar nos storybook',
     name: 'José Vitor',
-    avatarUrlSize: 'md'
+    size: 'md'
   },
   argTypes: {
     name: {
@@ -28,16 +28,6 @@ export default {
     },
     src: {
       name: 'src',
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    },
-    avatarUrlSize: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      name: 'avatarUrlSize',
-      control: { type: 'radio' },
       table: {
         type: {
           summary: 'string'

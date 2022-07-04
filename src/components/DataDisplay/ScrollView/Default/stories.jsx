@@ -38,7 +38,7 @@ export default {
 }
 
 export const Default = (args) => (
-  <ScrollView {...args}>
+  <ScrollView tabIndex={0} className="accessible" {...args}>
     <Card>
       <Text>ScrollView</Text>
       <Text>

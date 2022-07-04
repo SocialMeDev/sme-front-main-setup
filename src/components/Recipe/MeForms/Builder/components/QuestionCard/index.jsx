@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 
 import { useFormsManager } from '../../contexts/FormsManager/Provider'
-import { Card } from 'components/atoms/Card/Basic'
+import { Card } from 'components'
 import Content from './components/Content'
 import KindSelection from './components/KindSelection'
 import Footer from './components/Footer'

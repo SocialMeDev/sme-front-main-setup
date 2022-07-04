@@ -1,6 +1,5 @@
-import { Flex, VStack } from '@chakra-ui/react'
-
 import { useFormsManager } from './contexts/FormsManager/Provider'
+import { Flex, Stack } from 'components'
 import AddQuestionButton from './components/AddQuestionButton'
 import QuestionCard from './components/QuestionCard'
 import DeleteFormButton from './components/DeleteFormButton'
@@ -16,7 +15,7 @@ export default function MeForms() {
       direction="column"
       align="center"
     >
-      <VStack w="100%" spacing={2}>
+      <Stack w="100%">
         {questions.map((question, index) => (
           <QuestionCard key={index} index={index} question={question} />
         ))}
@@ -24,7 +23,7 @@ export default function MeForms() {
         <Flex justify="space-between" w="full">
           <Flex>{questions.length > 0 && <DeleteFormButton />}</Flex>
         </Flex>
-      </VStack>
+      </Stack>
     </Flex>
   )
 }

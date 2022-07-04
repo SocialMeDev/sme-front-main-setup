@@ -1,5 +1,5 @@
 import { CreateButton } from 'components'
-import searchOnSocialMe from 'services/socialMeApis/modules/citizen/calls/user/searchOnSocialMe'
+import readSocialMeUsers from 'services/socialMeApis/modules/citizen/calls/user/searchOnSocialMe'
 
 import UserDrawer from './components/UserDrawer'
 import PersonSearch from '.'
@@ -37,7 +37,7 @@ export default {
     submitButtonText: 'Filtrar',
     title: 'Pesquisando usuários',
     actionView: UserDrawer,
-    searchRoute: (filters) => searchOnSocialMe('demo', filters),
+    searchRoute: (filters) => readSocialMeUsers('demo', filters),
     trigger: <CreateButton>Nova usuário</CreateButton>
   },
   argTypes: {

@@ -20,6 +20,7 @@ export default function AnswerContainer({ answer }) {
       </Box>
     )
   }
+
   function LONG_TEXT() {
     return (
       <Box p={2} border="1px solid" borderColor="gray.50" rounded="md">
@@ -31,6 +32,7 @@ export default function AnswerContainer({ answer }) {
       </Box>
     )
   }
+
   function SINGLE_SELECTION_BOX() {
     return (
       <RadioGroup value={answer.answer?.[0]}>

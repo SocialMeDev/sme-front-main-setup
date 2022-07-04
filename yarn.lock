@@ -5357,6 +5357,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cropperjs@^1.5.12:
+  version "1.5.12"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.12.tgz#d9c0db2bfb8c0d769d51739e8f916bbc44e10f50"
+  integrity sha512-re7UdjE5UnwdrovyhNzZ6gathI4Rs3KGCBSc8HCIjUo5hO42CtzyblmWLj6QWVw7huHyDMfpKxhiO2II77nhDw==
+
 cross-spawn@^6.0.0:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -10247,6 +10252,14 @@ react-hook-form@^7.22.2:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.24.1.tgz#00e80ca20fe3bb3b86d236d74ed1a4e5f6525228"
   integrity sha512-UndVzKetChAsO+qkRo/6vOgaeTP60x324mHQ4iXVgHDvFjd+X/caWW0/QuAqipt8Bs7pyKH8147UQCrPTYFc2g==
 
+react-input-mask@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-2.0.4.tgz#9ade5cf8196f4a856dbf010820fe75a795f3eb14"
+  integrity sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==
+  dependencies:
+    invariant "^2.2.4"
+    warning "^4.0.2"
+
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.1.tgz#58476c78fde05d5055646ed8ec02030af42953c8"
@@ -12318,7 +12331,7 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.12"
 
-warning@^4.0.3:
+warning@^4.0.2, warning@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==

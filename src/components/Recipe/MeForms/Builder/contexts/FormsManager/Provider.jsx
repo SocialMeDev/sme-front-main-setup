@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState, useCallback } from 'react'
 
-import { Box, useColorModeValue } from '@chakra-ui/react'
-import { Loader } from 'components/atoms/Loader/Basic'
+import { Box, Loader } from 'components'
+import { useColorModeValue } from 'hooks'
 import FormsManagerContext from './Context'
 
 export default function FormsManagerProvider({

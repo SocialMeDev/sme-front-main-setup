@@ -1,12 +1,12 @@
+import { useMemo } from 'react'
+
 import SidebarContextProvider from 'contexts/Sidebar/Provider'
-
 import { GridLayout10, ToolsSettings } from 'components/Icons/Interface'
-
 import Sidebar from '.'
 
 export default {
   component: Sidebar,
-  title: 'Recipe/Sidebar/Defalt',
+  title: 'Recipe/Sidebar/Default',
   argTypes: {
     plugins: {
       name: 'plugins',
@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const Common = (args) => {
+export const Default = (args) => {
   const sidebarItems = [
     {
       name: 'Grupo 1',
@@ -47,26 +47,27 @@ export const Common = (args) => {
     }
   ]
 
+  const plugins = useMemo(() => {
+    return [
+      {
+        name: 'LogoWithLink',
+        props: {
+          label: 'Voltar a alguma tela ai',
+          href: '/'
+        }
+      },
+      {
+        name: 'MenuGroup',
+        props: {
+          sidebarItems
+        }
+      }
+    ]
+  }, [])
+
   return (
     <SidebarContextProvider>
-      <Sidebar
-        plugins={[
-          {
-            name: 'GoBackLogo',
-            props: {
-              label: 'Voltar a alguma tela ai',
-              href: '/'
-            }
-          },
-          {
-            name: 'MenuGroup',
-            props: {
-              sidebarItems
-            }
-          }
-        ]}
-        {...args}
-      />
+      <Sidebar plugins={plugins} {...args} />
     </SidebarContextProvider>
   )
 }

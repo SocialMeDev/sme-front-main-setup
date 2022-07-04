@@ -2,18 +2,18 @@ import { memo, Fragment } from 'react'
 import dynamic from 'next/dynamic'
 
 import { Flex, Stack } from 'components'
-import AuthenticatedUsersModal from './plugins/AuthenticatedUsersModal'
-import LoggedUserMenu from './plugins/LoggedUserMenu'
-import Logo from './plugins/Logo'
-import MessagesButton from './plugins/MessagesButton'
-import NotificationButton from './plugins/NotificationButton'
-import Search from './plugins/Search'
-import SettingsButton from './plugins/SettingsButton'
-import SidebarCollapseButton from './plugins/SidebarCollapseButton'
-import SocialMeModulesButton from './plugins/SocialMeModulesButton'
-import ToggleThemeButton from './plugins/ToggleThemeButton'
+import AuthenticatedUsersModal from './components/AuthenticatedUsersModal'
+import LoggedUserMenu from './components/LoggedUserMenu'
+import Logo from './components/Logo'
+import MessagesButton from './components/MessagesButton'
+import NotificationButton from './components/NotificationButton'
+import Search from './components/Search'
+import SettingsButton from './components/SettingsButton'
+import SidebarCollapseButton from './components/SidebarCollapseButton'
+import SocialMeModulesButton from './components/SocialMeModulesButton'
+import ToggleThemeButton from './components/ToggleThemeButton'
 
-const LoginButton = dynamic(() => import('./plugins/LoginButton'), {
+const LoginButton = dynamic(() => import('./components/LoginButton'), {
   ssr: false
 })
 

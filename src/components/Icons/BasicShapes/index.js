@@ -1,6 +1,6 @@
 import Circle from './Circle'
 import Square from './Square'
 
-const Icons = { Circle, Square }
+export { Circle, Square }
 
-export default Icons
+export default { Circle, Square }

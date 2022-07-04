@@ -1,12 +1,11 @@
 import { useMemo } from 'react'
 
 import LandingPage from '.'
-
 import SidebarContextProvider from 'contexts/Sidebar/Provider'
 
 export default {
   component: LandingPage,
-  title: 'Organisms/LandingPage/Basic/_1',
+  title: 'Templates/LandingPage/Default',
   argTypes: {
     children: {
       name: 'children',
@@ -19,7 +18,7 @@ export default {
   }
 }
 
-export const Common = (args) => {
+export const Default = (args) => {
   const navbar = useMemo(() => {
     return {
       left: [

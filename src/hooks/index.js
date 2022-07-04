@@ -5,7 +5,6 @@ import useDebounce from './useDebounce'
 import useDebounceValue from './useDebounceValue'
 import useDisclosure from './useDisclosure'
 import useDownloadFile from './useDownloadFile'
-import useDraggable from './useDraggable'
 import useEnvironment from './useEnvironment'
 import useFiltersInURL from './useFiltersInURL'
 import useGeolocation from './useGeolocation'
@@ -23,7 +22,6 @@ export {
   useDebounceValue,
   useDisclosure,
   useDownloadFile,
-  useDraggable,
   useEnvironment,
   useFiltersInURL,
   useGeolocation,

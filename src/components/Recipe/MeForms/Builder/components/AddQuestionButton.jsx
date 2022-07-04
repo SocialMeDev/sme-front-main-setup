@@ -1,5 +1,4 @@
-import { Flex, Icon, Text } from '@chakra-ui/react'
-
+import { Flex, Icon, Text } from 'components'
 import { useFormsManager } from '../contexts/FormsManager/Provider'
 import { PlusAdd } from 'components/Icons/Interface'
 import { getAppColors } from 'utils/helpers/sirVariables'
@@ -9,8 +8,8 @@ export default function AddQuestionButton() {
 
   return (
     <Flex
-      rounded={'md'}
-      overflow={'hidden'}
+      rounded="md"
+      overflow="hidden"
       p={2}
       w="full"
       borderWidth="2px"

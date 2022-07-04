@@ -17,6 +17,8 @@ function Rotate({
 
   const animation = `${spin} ${timingFunction} ${duration} ${delay} ${direction}`
 
+  console.log(`animation`, animation)
+
   return (
     <Box w="max-content" animation={animation}>
       {children}

@@ -63,24 +63,6 @@ const getStyle = () => {
         display: 'none'
       }
     },
-    //BASIC
-    '#text-editor-quill-basic .ql-editor': {
-      backgroundColor: 'white',
-      width: '8.5in',
-      borderTop: '1px solid',
-      borderBottom: '1px solid',
-      borderLeft: '1px solid',
-      borderRight: '1px solid',
-      borderColor: 'borderColor'
-    },
-    '#text-editor-quill-basic .ql-container.ql-snow': {
-      border: 'none',
-      display: 'flex',
-      justifyContent: 'center'
-    },
-    '#text-editor-quill-basic .ql-toolbar.ql-snow': {
-      backgroundColor: 'bgContent'
-    },
     // FULL
     '#text-editor-quill-full .ql-editor': {
       backgroundColor: 'white',

@@ -6,7 +6,7 @@ import { getAppUrl } from 'utils/helpers/sirVariables'
 import InstitutionSubdomainContext from './Context'
 import showInstitution from 'services/socialMeApis/modules/appAlerts/calls/servicePublic/institution/show'
 
-export default function InstitutionSubdomain({ children }) {
+export default function InstitutionSubdomainProvider({ children }) {
   const { push } = useRouter()
 
   const [isLoading, setIsLoading] = useState(true)

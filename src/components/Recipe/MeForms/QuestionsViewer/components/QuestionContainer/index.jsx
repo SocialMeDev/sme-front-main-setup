@@ -1,4 +1,5 @@
 import {
+  MaskInput,
   Stack,
   Radio,
   RadioGroup,
@@ -11,10 +12,9 @@ import {
   Checkbox,
   CheckboxGroup,
   Select
-} from '@chakra-ui/react'
-import { useState } from 'react'
+} from 'components'
 
-import { MaskInput } from 'components/atoms/MaskInput/Basic'
+import { useState } from 'react'
 import { timeMask, brazilianDateMask } from 'utils/masks'
 
 const size = 'sm'

@@ -4,7 +4,7 @@
 		"paths": {
 			"pages/*": ["../pages/*"],
 			"screens/*": ["../screens/*"],
-			"constants/*": ["../constants/*"],
+			"constants/*": ["../screens/constants/*"],
 			"public/*": ["../public/*"]
 		}
 	}

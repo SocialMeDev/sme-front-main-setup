@@ -8,10 +8,9 @@ import {
   ModalBody,
   Heading,
   Text,
-  VStack,
-  useDisclosure
-} from '@chakra-ui/react'
-
+  Stack
+} from 'components'
+import { useDisclosure } from 'hooks'
 import { useFormsManager } from '../contexts/FormsManager/Provider'
 import { TrashBinSquare } from 'components/Icons/Interface'
 
@@ -33,7 +32,7 @@ export default function DeleteFormButton() {
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
-            <VStack
+            <Stack
               w="full"
               justify="center"
               direction="column"
@@ -46,7 +45,7 @@ export default function DeleteFormButton() {
               <Text color="red.500" fontWeight="bold">
                 Você não poderá voltar atrás
               </Text>
-            </VStack>
+            </Stack>
           </ModalBody>
 
           <ModalFooter>

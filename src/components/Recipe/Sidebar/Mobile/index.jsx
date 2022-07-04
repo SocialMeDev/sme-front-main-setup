@@ -10,17 +10,19 @@ import {
 
 import { useSidebar } from 'contexts/Sidebar/Provider'
 
-import GoBackLogo from './plugins/GoBackLogo'
-import Logo from './plugins/Logo'
-import MenuGroup from './plugins/MenuGroup'
+import LogoWithLink from './components/LogoWithLink'
+import Logo from './components/Logo'
+import MenuGroup from './components/MenuGroup'
 
 const plugins = {
-  GoBackLogo,
+  LogoWithLink,
   Logo,
   MenuGroup
 }
 
 function MobileSidebar({ ...rest }) {
+  console.log(`MobileSidebar`)
+
   const { isOpen, onClose } = useSidebar()
 
   function RenderPlugin({ name, visible = true, props }) {

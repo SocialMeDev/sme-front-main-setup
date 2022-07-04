@@ -6,7 +6,6 @@ import urlParameters from 'variables/urlParameters'
 
 import appConstants from 'constants/app'
 import colorsConstants from 'constants/colors'
-import filesConstants from 'constants/files'
 
 function getApiHeaders(name) {
   return apiHeaders[name] || undefined
@@ -37,10 +36,6 @@ function getAppColors(name) {
   return colorsConstants[split[0]][split[1]] || undefined
 }
 
-function getAppFiles(name) {
-  return filesConstants[name] || undefined
-}
-
 export {
   getApiHeaders,
   getApiUrl,
@@ -48,6 +43,5 @@ export {
   getCookieName,
   getParameterName,
   getAppInformation,
-  getAppColors,
-  getAppFiles
+  getAppColors
 }

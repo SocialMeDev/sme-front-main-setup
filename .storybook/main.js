@@ -3,7 +3,12 @@ const path = require('path')
 module.exports = {
 	stories: ['../src/components/**/stories.jsx'],
 	staticDirs: ['../public'],
-	addons: ['@storybook/addon-essentials', 'storybook-addon-next-router', '@storybook/addon-a11y', '@storybook/addon-storysource'],
+	addons: [
+		'@storybook/addon-essentials', 
+		'storybook-addon-next-router', 
+		'@storybook/addon-a11y', 
+		'@storybook/addon-storysource'
+	],
 	webpackFinal: async (config) => {
 		return {
 			...config,
@@ -11,7 +16,7 @@ module.exports = {
 				...config.resolve,
 				alias: {
 					...config.resolve.alias,
-					constants: path.resolve(__dirname, '../constants'),
+					constants: path.resolve(__dirname, '../screens/constants'),
 					public: path.resolve(__dirname, '../public'),
 					screens: path.resolve(__dirname, '../screens'),
 					pages: path.resolve(__dirname, '../pages'),

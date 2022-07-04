@@ -1,14 +1,13 @@
 import { useMemo } from 'react'
+
 import Dashboard from '.'
-
 import SidebarContextProvider from 'contexts/Sidebar/Provider'
-
-import { ToolsSettings } from 'components/atoms/Icons/Interface'
-import { HomeHouse } from 'components/atoms/Icons/BuildingConstruction'
+import { ToolsSettings } from 'components/Icons/Interface'
+import { HomeHouse } from 'components/Icons/BuildingConstruction'
 
 export default {
   component: Dashboard,
-  title: 'Organisms/Dashboards/Basic/_1',
+  title: 'Templates/Dashboards/Default',
   argTypes: {
     children: {
       name: 'children',
@@ -21,7 +20,7 @@ export default {
   }
 }
 
-export const Common = (args) => {
+export const Defaul = (args) => {
   const sidebar = useMemo(() => {
     return {
       plugins: [
