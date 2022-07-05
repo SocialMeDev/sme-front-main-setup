@@ -1,16 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function showApplications(appId) {
-  const params = {
-    operation: ['Application', 'Show'],
-    urlParams: {
-      appId
-    }
-  }
-
-  const response = await API(params)
+  const response = await administerAPI({
+    method: 'GET',
+    url: `/admin/app-api/app/${appId}`
+  })
 
   if (!response.header.success) {
     toast.error(response.header.title)

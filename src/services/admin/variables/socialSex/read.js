@@ -1,16 +1,17 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
-export default async function readSocialSex(data) {
-  const params = {
-    operation: ['SocialSex', 'Read'],
+export default async function readSocialSexes(data) {
+  const response = await administerAPI({
+    method: 'POST',
+    url: '/admin/person/social-sexes',
     data
-  }
+  })
 
-  const response = await API(params)
-
-  if (!response.header.success) {
+  if (response.header.success) {
+    toast.success(response.header.title)
+  } else {
     toast.error(response.header.title)
   }
 

@@ -1,19 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
-export default async function bindAPIsToApplication(access, appId) {
-  const params = {
-    operation: ['Application', 'API', 'Bind'],
-    urlParams: {
-      appId
-    },
-    data: {
-      access
-    }
-  }
-
-  const response = await API(params)
+export default async function bindAPIsToApplication(appId) {
+  const response = await administerAPI({
+    method: 'PUT',
+    url: `/admin/app-api/app/${appId}/access`
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

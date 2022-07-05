@@ -1,16 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function checkSocialSexSlug(socialSexSlug) {
-  const params = {
-    operation: ['SocialSex', 'Delete'],
-    urlParams: {
-      socialSexSlug
-    }
-  }
-
-  const response = await API(params)
+  const response = await administerAPI({
+    method: 'GET',
+    url: `/admin/person/social-sex/slug/${socialSexSlug}`
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

@@ -1,16 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function deleteResponseCode(responseCodeId) {
-  const params = {
-    operation: ['ResponseCode', 'Delete'],
-    urlParams: {
-      responseCodeId
-    }
-  }
-
-  const response = await API(params)
+  const response = await administerAPI({
+    method: 'DELETE',
+    url: `/admin/response-code/response-code/${responseCodeId}`
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

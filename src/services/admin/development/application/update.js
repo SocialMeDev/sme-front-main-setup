@@ -1,21 +1,15 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
-export default async function updateApplication(data, appId) {
-  const params = {
-    operation: ['Application', 'Update'],
-    urlParams: {
-      appId
-    },
+export default async function updateApplication({ data, appId }) {
+  const response = await administerAPI({
+    method: 'PATCH',
+    url: `/admin/app-api/app/${appId}`,
     data
-  }
+  })
 
-  const response = await API(params)
-
-  if (response.header.success) {
-    toast.success(response.header.title)
-  } else {
+  if (!response.header.success) {
     toast.error(response.header.title)
   }
 

@@ -1,14 +1,17 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
-export default async function getScopes(data) {
-  const params = {
-    operation: ['ResponseCode', 'Scope', 'Read'],
-    data
-  }
-
-  const response = await API(params)
+export default async function readAPIScopes() {
+  const response = await administerAPI({
+    method: 'POST',
+    url: '/admin/response-code/scopes',
+    data: {
+      pagination: {
+        limit: 0
+      }
+    }
+  })
 
   if (!response.header.success) {
     toast.error(response.header.title)

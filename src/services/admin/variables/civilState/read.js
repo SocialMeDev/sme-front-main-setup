@@ -1,14 +1,13 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function readCivilState(data) {
-  const params = {
-    operation: ['CivilState', 'Read'],
+  const response = await administerAPI({
+    method: 'POST',
+    url: '/admin/person/civil-states',
     data
-  }
-
-  const response = await API(params)
+  })
 
   if (!response.header.success) {
     toast.error(response.header.title)

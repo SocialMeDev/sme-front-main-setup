@@ -1,16 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function deleteCivilState(civilStateSlug) {
-  const params = {
-    operation: ['CivilState', 'Delete'],
-    urlParams: {
-      civilStateSlug
-    }
-  }
-
-  const response = await API(params)
+  const response = await administerAPI({
+    method: 'DELETE',
+    url: `/admin/person/civil-state/${civilStateSlug}`
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

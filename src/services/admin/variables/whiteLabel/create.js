@@ -1,14 +1,13 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function createWhiteLabel(data) {
-  const params = {
-    operation: ['WhiteLabel', 'Create'],
+  const response = await administerAPI({
+    method: 'GET',
+    url: '/admin/person/white-label',
     data
-  }
-
-  const response = await API(params)
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

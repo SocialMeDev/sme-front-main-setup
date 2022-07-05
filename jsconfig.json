@@ -3,8 +3,5 @@
 		"baseUrl": "src",
 		"module": "esnext",
 		"target": "esnext",
-		"paths": {
-			"public/*": ["../public/*"]
-		}
 	}
 }

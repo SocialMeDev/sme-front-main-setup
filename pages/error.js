@@ -35,14 +35,14 @@ function Error({ statusCode, res, err }) {
       const data = {
         internal_id: Date.now(),
         message: JSON.stringify(err.message),
-        //stack: JSON.stringify(err.stack),
         res: JSON.stringify(res),
         statusCode: JSON.stringify(statusCode)
       }
+
       const response = await createError(data.internal_id, data)
-      if (response) {
-        setRequestId(data.internal_id)
-      }
+
+      if (response) setRequestId(data.internal_id)
+
       setLoadingContent(false)
     }
     createLog()
@@ -60,14 +60,12 @@ function Error({ statusCode, res, err }) {
     setLoadingButton(false)
   }
 
-  if (loadingContent) {
-    return <Loader h="100vh" />
-  }
+  if (loadingContent) return <Loader h="100vh" text="Carregando..." />
 
   return (
     <Center
-      minH="100vh"
       p={20}
+      minH="100vh"
       flexDir={{ base: 'column', md: 'row', lg: 'row' }}
     >
       <Flex>

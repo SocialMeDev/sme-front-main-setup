@@ -1,4 +1,4 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
@@ -7,15 +7,11 @@ export default async function uploadWhiteLabelAvatar({ file, whiteLabelSlug }) {
 
   data.append('file', file)
 
-  const params = {
-    operation: ['WhiteLabel', 'Avatar', 'Upload'],
-    urlParams: {
-      whiteLabelSlug
-    },
+  const response = await administerAPI({
+    method: 'POST',
+    url: `/admin/person/white-label/${whiteLabelSlug}/avatar`,
     data
-  }
-
-  const response = await API(params)
+  })
 
   if (response.header.success) {
     toast.success(response.header.title)

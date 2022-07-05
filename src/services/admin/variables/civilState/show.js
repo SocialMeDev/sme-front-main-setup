@@ -1,16 +1,12 @@
-import API from 'services/socialMeApis/modules/admin'
+import administerAPI from 'configs/http/administer'
 
 import toast from 'utils/toast'
 
 export default async function showCivilState(civilStateSlug) {
-  const params = {
-    operation: ['CivilState', 'Show'],
-    urlParams: {
-      civilStateSlug
-    }
-  }
-
-  const response = await API(params)
+  const response = await administerAPI({
+    method: 'GET',
+    url: `/admin/person/civil-state/${civilStateSlug}`
+  })
 
   if (!response.header.success) {
     toast.error(response.header.title)
