@@ -1,10 +1,9 @@
 {
 	"compilerOptions": {
 		"baseUrl": "src",
+		"module": "esnext",
+		"target": "esnext",
 		"paths": {
-			"pages/*": ["../pages/*"],
-			"screens/*": ["../screens/*"],
-			"constants/*": ["../screens/constants/*"],
 			"public/*": ["../public/*"]
 		}
 	}
