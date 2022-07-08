@@ -3,5 +3,9 @@
 		"baseUrl": "src",
 		"module": "esnext",
 		"target": "esnext",
+		"outDir": "./build",
+		"paths": {
+			"@public/*": ["../public/*"]
+		}
 	}
 }

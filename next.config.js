@@ -1,11 +1,4 @@
-const withPWA = require('next-pwa')
-
-module.exports = withPWA({
+module.exports = {
   trailingSlash: true,
-  reactStrictMode: true,
-  pwa: {
-    dest: 'public',
-    register: true,
-    disable: true
-  }
-})
+  reactStrictMode: true
+}
