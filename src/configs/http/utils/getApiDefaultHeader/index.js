@@ -1,33 +1,26 @@
-import { getStorage } from 'utils/helpers/sirStorage'
-import {
-  getApiHeaders,
-  getCookieName,
-  getAppInformation
-} from 'utils/helpers/sirVariables'
+import { getStorage } from 'helpers/sirStorage'
 
-async function getApiDefaultHeader() {
-  const appKey = await getApiHeaders('appKey')
-  const userApiHeader = await getApiHeaders('user')
+import API_HEADERS from 'constants/apiHeaders'
 
-  const userPositionCookie = await getCookieName('userPosition')
-  const userCookie = await getCookieName('user')
-
-  const appKeyValue = await getAppInformation('key')
+async function getAPIDefaultHeader() {
+  const userPositionCookie = process.env.NEXT_PUBLIC_USER_POSITION_COOKIE
+  const usersTokensCookie = process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE
+  const apiKeyValue = process.env.NEXT_PUBLIC_API_KEY
 
   const userPosition = await getStorage(userPositionCookie)
 
   const userIndex = userPosition || 0
 
-  let usersToken = await getStorage(userCookie)
+  let usersToken = await getStorage(usersTokensCookie)
 
   if (usersToken) usersToken = JSON.parse(usersToken)
 
   const headers = {
-    [userApiHeader]: usersToken[userIndex],
-    [appKey]: appKeyValue
+    [API_HEADERS.USER_TOKEN]: usersToken[userIndex],
+    [API_HEADERS.KEY]: apiKeyValue
   }
 
   return headers
 }
 
-export default getApiDefaultHeader
+export default getAPIDefaultHeader

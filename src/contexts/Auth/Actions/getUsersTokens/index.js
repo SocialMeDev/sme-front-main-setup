@@ -1,16 +1,15 @@
-import { deleteStorage, getStorage } from 'utils/helpers/sirStorage'
-import { getCookieName } from 'utils/helpers/sirVariables'
+import { deleteStorage, getStorage } from 'helpers/sirStorage'
 
 export default async function getUsersToken() {
-  const userCookie = getCookieName('user')
+  const usersTokensCookie = process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE
 
-  let usersToken = await getStorage(userCookie)
+  let usersToken = await getStorage(usersTokensCookie)
 
   if (usersToken) {
     try {
       usersToken = JSON.parse(usersToken)
     } catch (error) {
-      await deleteStorage(userCookie)
+      await deleteStorage(usersTokensCookie)
 
       return []
     }

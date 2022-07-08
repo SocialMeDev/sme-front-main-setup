@@ -3,11 +3,11 @@ import axios from 'axios'
 import getAPIDefaultHeader from './utils/getAPIDefaultHeader'
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_AUTH_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_ADMIN_URL,
   timeout: 50000
 })
 
-export default async function authenticatorAPI(axiosConfig) {
+export async function administratorAPI(axiosConfig) {
   const headers = await getAPIDefaultHeader()
 
   return api({ headers, ...axiosConfig })

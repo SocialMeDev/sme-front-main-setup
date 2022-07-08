@@ -1,9 +1,9 @@
-import { setStorage } from 'utils/helpers/sirStorage'
-import { getCookieName } from 'utils/helpers/sirVariables'
+import { setStorage } from 'helpers/sirStorage'
+
 import getUsersTokens from '../getUsersTokens'
 
 export default async function removeUserFromUserList(removedUser, userList) {
-  const userCookie = getCookieName('user')
+  const usersTokensCookie = process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE
 
   const usersToken = await getUsersTokens()
 
@@ -15,7 +15,7 @@ export default async function removeUserFromUserList(removedUser, userList) {
     return user.id !== removedUser.id
   })
 
-  await setStorage(userCookie, JSON.stringify(newUsersToken))
+  await setStorage(usersTokensCookie, JSON.stringify(newUsersToken))
 
   return newUserList
 }

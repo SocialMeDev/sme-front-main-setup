@@ -1,5 +1,4 @@
-import { setStorage } from 'utils/helpers/sirStorage'
-import { getCookieName } from 'utils/helpers/sirVariables'
+import { setStorage } from 'helpers/sirStorage'
 import getUsersTokens from '../getUsersTokens'
 
 function treatNewAuthUser(user, token) {
@@ -13,8 +12,8 @@ function treatNewAuthUser(user, token) {
 export default async function authenticateUser(newUser, userList) {
   const { person, usrtkn } = newUser
 
-  const userCookie = getCookieName('user')
-  const userPositionCookie = getCookieName('userPosition')
+  const usersTokensCookie = process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE
+  const userPositionCookie = process.env.NEXT_PUBLIC_USER_POSITION_COOKIE
 
   const usersToken = await getUsersTokens()
 
@@ -33,9 +32,12 @@ export default async function authenticateUser(newUser, userList) {
 
     usersToken[newUserIndex] = newToken
 
-    await setStorage(userCookie, JSON.stringify(usersToken))
+    await setStorage(usersTokensCookie, JSON.stringify(usersToken))
   } else {
-    await setStorage(userCookie, JSON.stringify([...usersToken, newToken]))
+    await setStorage(
+      usersTokensCookie,
+      JSON.stringify([...usersToken, newToken])
+    )
 
     newUserIndex = usersToken.length
   }

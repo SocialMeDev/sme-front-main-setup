@@ -2,27 +2,29 @@ import { useEffect, useContext, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 
 import { Loader } from 'components'
-import { getParameterName, getCookieName } from 'utils/helpers/sirVariables'
-import { setStorage } from 'utils/helpers/sirStorage'
+import URL_PARAMETERS from 'constants/urlParameters'
+import { setStorage } from 'helpers/sirStorage'
 import SocialMeContext from './Context'
 
 export default function SocialMeProvider({ children }) {
+  const usersTokensCookie = process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE
+  const userPositionCookie = process.env.NEXT_PUBLIC_USER_POSITION_COOKIE
+
   const [isLoading, setIsLoading] = useState(true)
   const { query, replace, reload } = useRouter()
 
   const { usersTokens, userPosition } = useMemo(() => {
     return {
-      usersTokens: query[getParameterName('usersTokens')],
-      userPosition: query[getParameterName('userPosition')]
+      usersTokens: query[URL_PARAMETERS.USERS_TOKENS],
+      userPosition: query[URL_PARAMETERS.USER_POSITION]
     }
   }, [query])
 
   useEffect(() => {
     async function setAuthInformations() {
-      const userCookie = await getCookieName('user')
-      await setStorage(userCookie, usersTokens)
-      const userPositionCookie = await getCookieName('userPosition')
-      setStorage(userPositionCookie, userPosition)
+      await setStorage(usersTokensCookie, usersTokens)
+      await setStorage(userPositionCookie, userPosition)
+
       let url = ''
       if (typeof window !== 'undefined') {
         url = window.location.href.split('?')[0]

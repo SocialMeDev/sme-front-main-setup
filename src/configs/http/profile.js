@@ -1,20 +1,20 @@
 import axios from 'axios'
 
-import { getApiUrl } from 'utils/helpers/sirVariables'
-
-import getApiDefaultHeader from './utils/getApiDefaultHeader'
+import getAPIDefaultHeader from './utils/getAPIDefaultHeader'
 
 const api = axios.create({
-  baseURL: getApiUrl('sme-profile'),
+  baseURL: process.env.NEXT_PUBLIC_API_PROFILE_URL,
   timeout: 50000
 })
 
-async function profileAPI(axiosConfig) {
-  const headers = await getApiDefaultHeader()
+export default async function profileAPI(axiosConfig) {
+  const headers = await getAPIDefaultHeader()
 
-  const response = await api({ headers, ...axiosConfig })
-
-  return response.data
+  return api({ headers, ...axiosConfig })
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return error.response.data
+    })
 }
-
-export { profileAPI }

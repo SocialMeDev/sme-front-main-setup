@@ -1,27 +1,27 @@
 import { useCallback, useState, useContext, useEffect } from 'react'
 
 import AuthContext from './Context'
-import { getCookieName } from 'utils/helpers/sirVariables'
-import { setStorage } from 'utils/helpers/sirStorage'
 
-import setLogout from 'services/socialMeApis/modules/auth/calls/user/logout'
-import setLogoutAll from 'services/socialMeApis/modules/auth/calls/user/logoutAll'
+import { setStorage } from 'helpers/sirStorage'
+
+import setLogout from 'services/auth/user/logout'
+import setLogoutAll from 'services/auth/user/logoutAll'
 import connectUser from './Actions/authenticateUser'
 import removeUserFromUserList from './Actions/removeUserFromUserList'
 import destroyUserPositionCookie from './Actions/destroyUserPositionCookie'
 import getUserList from './Actions/getUserList'
 import verifyUserToken from './Actions/verifyUserToken'
-import { Box, Loader } from 'components'
+import { Loader } from 'components'
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState({})
   const [userList, setUserList] = useState([])
   const [isUserLogged, setIsUserLogged] = useState(false)
   const [finishedUserListLogic, setFinishedUserListLogic] = useState(false)
-  const [finishedUserLogic, setFinishedUserLogic] = useState(false)
+  const [finishedUserLogic, setfinishedUserLogic] = useState(false)
 
   const checkUserToken = useCallback(async (selecetdUserPosition) => {
-    setFinishedUserLogic(false)
+    setfinishedUserLogic(false)
 
     const response = await verifyUserToken(selecetdUserPosition)
 
@@ -30,7 +30,7 @@ function AuthProvider({ children }) {
       setIsUserLogged(true)
     }
 
-    setFinishedUserLogic(true)
+    setfinishedUserLogic(true)
   }, [])
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function AuthProvider({ children }) {
   }, [])
 
   const setNewUser = useCallback(async (user, userIndex) => {
-    const userPositionCookie = getCookieName('userPosition')
+    const userPositionCookie = process.env.NEXT_PUBLIC_USER_POSITION_COOKIE
 
     await setStorage(userPositionCookie, userIndex)
 
@@ -163,7 +163,7 @@ function AuthProvider({ children }) {
       }}
     >
       {finishedUserLogic && finishedUserListLogic ? (
-        <Box>{children}</Box>
+        <>{children}</>
       ) : (
         <Loader h="100vh" text="Carregando" />
       )}

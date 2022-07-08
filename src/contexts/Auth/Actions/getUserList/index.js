@@ -1,6 +1,6 @@
-import getAuthUsers from 'services/socialMeApis/modules/auth/calls/authUser/read'
-import getUsersTokens from '../getUsersTokens'
+import getAuthUsers from 'services/auth/authUser/read'
 
+import getUsersTokens from '../getUsersTokens'
 import sortUserList from './sortUserList'
 
 export default async function getUserList() {
