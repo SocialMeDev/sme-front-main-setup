@@ -1,6 +1,6 @@
-const logo = '/images/logos/logo.svg'
-const logoDark = '/images/logos/logo.svg'
-const miniLogo = '/images/logos/logo.svg'
-const miniLogoDark = '/images/logos/logo.svg'
+const LOGO = '/images/logos/logo.svg'
+const LOGO_DARK = '/images/logos/logo.svg'
+const MINI_LOGO = '/images/logos/logo.svg'
+const MINI_LOGO_DARK = '/images/logos/logo.svg'
 
-export { logo, logoDark, miniLogo, miniLogoDark }
+export { LOGO, LOGO_DARK, MINI_LOGO, MINI_LOGO_DARK }
