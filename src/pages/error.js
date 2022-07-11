@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Code, useColorModeValue } from '@chakra-ui/react'
+
 import {
   Box,
   Flex,
@@ -14,21 +15,23 @@ import { ToolsSettings } from 'components/Icons/Interface'
 import { getCookieName } from 'utils/helpers/sirVariables'
 import { deleteStorage } from 'utils/helpers/sirStorage'
 import createError from 'services/socialMeApis/modules/admin/calls/error/create'
-import animationData from 'public/images/lotties/memeError.json'
+import animationData from '@public/images/lotties/memeError.json'
 
 function Error({ statusCode, res, err }) {
   const [loadingContent, setLoadingContent] = useState(true)
   const [loadingButton, setLoadingButton] = useState(false)
   const [requestId, setRequestId] = useState()
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+  const defaultOptions = useMemo(() => {
+    return {
+      loop: true,
+      autoplay: true,
+      animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
     }
-  }
+  }, [])
 
   useEffect(() => {
     async function createLog() {

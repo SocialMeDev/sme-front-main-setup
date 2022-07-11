@@ -1,34 +1,38 @@
+import { useMemo } from 'react'
+
 import {
   Box,
+  NextLink,
+  Lottie,
   Center,
   Heading,
   Text,
   Button,
   Flex,
-  VStack,
-  useColorModeValue,
-  useBreakpointValue
-} from '@chakra-ui/react'
-import NextLink from 'next/link'
-import Lottie from 'react-lottie'
-
-import animationDataLight from 'public/images/lotties/errorLight.json'
-import animationDataDark from 'public/images/lotties/errorDark.json'
+  Stack
+} from 'components'
+import { useBreakpointValue, useColorModeValue } from 'hooks'
+import animationDataLight from '@public/images/lotties/errorLight.json'
+import animationDataDark from '@public/images/lotties/errorDark.json'
 
 export default function Custom500() {
-  const defaultOptions = {
-    loop: false,
-    autoplay: true,
-    animationData: useColorModeValue(animationDataLight, animationDataDark),
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+  const defaultOptions = useMemo(() => {
+    return {
+      loop: false,
+      autoplay: true,
+      animationData: useColorModeValue(animationDataLight, animationDataDark),
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
     }
-  }
+  }, [])
+
   const lottieHeight = useBreakpointValue({ base: 150, md: 500 })
   const lottieWidth = useBreakpointValue({ base: 150, md: 500 })
+
   return (
-    <Center as="main" p={2} minH={['90vh', null, '100vh']}>
-      <Flex flexDir={['column', null, 'row']}>
+    <Center p={2} minH={{ base: ' 90vh', md: '100vh' }}>
+      <Flex flexDir={{ base: 'column', md: 'row' }}>
         <Box>
           <Lottie
             options={defaultOptions}
@@ -36,17 +40,17 @@ export default function Custom500() {
             width={lottieWidth}
           />
         </Box>
-        <VStack
+        <Stack
           p={6}
           flexDir={'column'}
-          align={['center', null, 'flex-start']}
+          align={{ base: 'center', md: 'flex-start' }}
           justify={'center'}
-          spacing={[2, null, 6]}
+          spacing={[{ base: 2, md: 6 }]}
         >
-          <Heading size="2xl" textAlign={['center', null, 'justify']}>
+          <Heading size="2xl" textAlign={{ base: 'center', md: 'justify' }}>
             Erro interno no servidor
           </Heading>
-          <Text fontSize={'lg'} textAlign={['center', null, 'justify']}>
+          <Text fontSize={'lg'} textAlign={{ base: 'center', md: 'justify' }}>
             Pedimos desculpas por isso. Tivemos problemas técnicos durante nossa
             última operação, mas você pode clicar no botão abaixo para voltar à
             página inicial.
@@ -56,7 +60,7 @@ export default function Custom500() {
               Voltar
             </Button>
           </NextLink>
-        </VStack>
+        </Stack>
       </Flex>
     </Center>
   )
