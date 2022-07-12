@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Code, useColorModeValue } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 
+import { Code } from '@chakra-ui/react'
 import {
   Box,
   Flex,
@@ -11,10 +11,10 @@ import {
   Loader,
   Lottie
 } from 'components'
+import { useColorModeValue } from 'hooks'
 import { ToolsSettings } from 'components/Icons/Interface'
-import { getCookieName } from 'utils/helpers/sirVariables'
-import { deleteStorage } from 'utils/helpers/sirStorage'
-import createError from 'services/socialMeApis/modules/admin/calls/error/create'
+import { deleteStorage } from 'helpers/sirStorage'
+import authenticatorAPI from 'configs/http/authenticator'
 import animationData from '@public/images/lotties/memeError.json'
 
 function Error({ statusCode, res, err }) {
@@ -22,27 +22,30 @@ function Error({ statusCode, res, err }) {
   const [loadingButton, setLoadingButton] = useState(false)
   const [requestId, setRequestId] = useState()
 
-  const defaultOptions = useMemo(() => {
-    return {
-      loop: true,
-      autoplay: true,
-      animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
     }
-  }, [])
+  }
 
   useEffect(() => {
     async function createLog() {
       const data = {
         internal_id: Date.now(),
         message: JSON.stringify(err.message),
-        //stack: JSON.stringify(err.stack),
         res: JSON.stringify(res),
         statusCode: JSON.stringify(statusCode)
       }
-      const response = await createError(data.internal_id, data)
+
+      const response = await authenticatorAPI({
+        url: `/admin/error/${data.internal_id}`,
+        method: 'POST',
+        data
+      })
+
       if (response) {
         setRequestId(data.internal_id)
       }
@@ -51,20 +54,19 @@ function Error({ statusCode, res, err }) {
     createLog()
   }, [])
 
-  async function onRepair() {
+  async function resetCookiesAndCache() {
     setLoadingButton(true)
-    await deleteStorage(getCookieName('browser'))
-    await deleteStorage(getCookieName('userPosition'))
-    await deleteStorage(getCookieName('user'))
-    await deleteStorage(getCookieName('acceptedCookies'))
-    await deleteStorage(getCookieName('userTheme'))
-    await deleteStorage(getCookieName('userSize'))
+
+    await deleteStorage(process.env.NEXT_PUBLIC_USER_POSITION_COOKIE)
+    await deleteStorage(process.env.NEXT_PUBLIC_USERS_TOKENS_COOKIE)
+    await deleteStorage(process.env.NEXT_PUBLIC_ACCEPT_COOKIES)
     window.location = window.location.href + '?eraseCache=true'
+
     setLoadingButton(false)
   }
 
   if (loadingContent) {
-    return <Loader h="100vh" />
+    return <Loader h="100vh" text="Carregando..." />
   }
 
   return (
@@ -92,7 +94,7 @@ function Error({ statusCode, res, err }) {
             variant="solid"
             leftIcon={<ToolsSettings />}
             isLoading={loadingButton}
-            onClick={() => onRepair()}
+            onClick={resetCookiesAndCache}
           >
             Tentar reparar
           </Button>
